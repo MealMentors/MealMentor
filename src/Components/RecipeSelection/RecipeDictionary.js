@@ -601,11 +601,21 @@ export default function FoodSelection() {
                 </select>
             </label>
             <label className = "centered">
-                <p>{value} Details:</p>
-                <p>Servings: {dict[value].Servings}, Calories: {dict[value].Calories}</p>
-                <p>Protein (g): {dict[value].ProteinGrams}, Fat (g): {dict[value].FatGrams}, Carbs (g): {dict[value].CarbsGrams}</p>
-                <p>Meal: {dict[value].Meal}, Cuisine: {dict[value].Cuisine}, Protein: {dict[value].Protein}</p>
-                <p>Notes: {dict[value].Notes}</p>
+                <label className = "macros">
+                    <p>
+                        <label className="macro">Servings: {dict[value].Servings}</label>
+                        <label className="macro">Calories: {dict[value].Calories}</label>
+                        <label className="macro">Protein (g): {dict[value].ProteinGrams}</label>
+                        <label className="macro">Fat (g): {dict[value].FatGrams}</label>
+                        <label className="macro">Carbs (g): {dict[value].CarbsGrams}</label>
+                    </p>
+                </label>
+                <p>
+                    <label className="description">Meal: {dict[value].Meal}</label>
+                    <label className="description">Cuisine: {dict[value].Cuisine}</label>
+                    <label className="description">Protein: {dict[value].Protein}</label>
+                </p>
+                <p className = "longdescription">Notes: {dict[value].Notes}</p>
             </label>
         </div>
     )

@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 0px;
 }
 
 .text{
@@ -36,21 +37,48 @@
     border-radius: 9px;
 }
 
-.inputs{
-    margin-top: 55px;
+.macros{
+    margin-top: 0px;
     display: flex;
-    flex-direction: column;
     gap: 25px;
 }
 
-.input{
+.macro {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin: auto;
-    width: 480px;
-    height: 80px;
+    margin-top: 10px;
+    width: 160px;
+    height: 30px;
     background: #eaeaea;
-    border-radius: 6px;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    width: 400px;
+    height: 30px;
+    background: #eaeaea;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.longdescription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+    width: 390px;
+    height: 170px;
+    background: #eaeaea;
+    border-radius: 20px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .input img{
@@ -60,6 +88,7 @@
 .input input{
     height: 50px;
     width: 400px;
+    align-items: center;
     background: transparent;
     border: none;
     outline: none;
