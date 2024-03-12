@@ -302,9 +302,9 @@ export default function FoodSelection() {
         setValue(event.target.value);
     }
     return (
-        <div className = "container">
+        <div>
             <label className= "header">
-                What to eat?
+                Recipe Selection:
                 <select value={value} onChange={handleChange}>
                     <option value="(Not) Refried Beans">(Not) Refried Beans</option>
                     <option value="Almost Boston Market Creamed Spinach">Almost Boston Market Creamed Spinach</option>

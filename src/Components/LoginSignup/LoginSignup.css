@@ -79,6 +79,12 @@
     margin: 60px auto;
 }
 
+.recipe-container{
+    display: flex;
+    gap: 30px;
+    margin: 0px auto;
+}
+
 .submit{
     display: flex;
     justify-content: center;
@@ -86,7 +92,7 @@
     width: 220px;
     height: 59px;
     color: #fff;
-    background: #a96609;
+    background: #96609;
     border-radius: 50px;
     font-size: 19px;
     font-weight: 700;
