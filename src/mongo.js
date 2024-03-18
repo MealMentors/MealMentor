@@ -21,4 +21,4 @@ const newSchema=new mongoose.Schema({
 
 const collection = mongoose.model("login",newSchema)
 
-module.exports=collection
+module.exports=collection 
