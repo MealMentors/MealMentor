@@ -9,13 +9,13 @@ mongoose.connect("mongodb://localhost:27017/website")
 
 
 const newSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
-    },
     email:{
         type:String,
         required:true
+    },
+    name:{
+        type:String,
+        required:false
     },
     password:{
         type:String,
@@ -23,6 +23,6 @@ const newSchema=new mongoose.Schema({
     }
 })
 
-const collection = mongoose.model("login",newSchema)
+const collection = mongoose.model("logins",newSchema)
 
 module.exports=collection 
