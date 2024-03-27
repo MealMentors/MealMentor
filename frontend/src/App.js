@@ -1,7 +1,10 @@
-// import './App.css'
+//import './App.css'
+import React from 'react'
+import Modal from 'react-modal'
 import Home from "./Components/Home"
 import Login from "./Components/Login"
 import Signup from "./Components/Signup"
+import calendar from "./Components/calendar"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 

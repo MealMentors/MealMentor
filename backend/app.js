@@ -51,6 +51,8 @@ app.post("/signup", async (req, res) => {
     }
 });
 
+
+app.use("/api/calendar", require("./controllers/calendarcontroller"))
 app.listen(8000, () => {
     console.log("port connected");
 });
