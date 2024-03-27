@@ -1,28 +1,36 @@
-const mongoose=require("mongoose")
-mongoose.connect("mongodb://localhost:27017/website")
-.then(()=>{
-    console.log("mongodb connected");
-})
-.catch(()=>{
-    console.log('failed');
-})
+// mongo.js
+const mongoose = require("mongoose");
 
+// Load environment variables from .env file
+require('dotenv').config();
 
-const newSchema=new mongoose.Schema({
-    email:{
-        type:String,
-        required:true
+// Establish MongoDB connection
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log("MongoDB connected");
+})
+.catch((error) => {
+  console.error("MongoDB connection failed:", error);
+});
+
+const userSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true
     },
-    name:{
-        type:String,
-        required:false
+    name: {
+        type: String,
+        required: false
     },
-    password:{
-        type:String,
-        required:true
+    password: {
+        type: String,
+        required: true
     }
-})
+});
 
-const collection = mongoose.model("logins",newSchema)
+const collection = mongoose.model("User", userSchema);
 
-module.exports=collection 
+module.exports = collection;
