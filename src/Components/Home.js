@@ -11,6 +11,8 @@ function Home (){
 
             <h1>Hello {location.state.id} and welcome to the homepage</h1>
 
+            
+
         </div>
     )
 }

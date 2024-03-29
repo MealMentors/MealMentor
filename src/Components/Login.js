@@ -3,6 +3,8 @@ import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import email_icon from "./Assets/email_icon.png";
+import password_icon from "./Assets/password_icon.png";
 
 function Login() {
 
@@ -50,13 +52,16 @@ function Login() {
                     <h1 className="d-flex justify-content-center">Login</h1><br></br>
 
                     <form action="POST">
-                        <div className="mb-3">
-                            <input type="email" className="form-control rounded-0" onChange={(e) => { setEmail(e.target.value) }} placeholder="Email" name="" id="" />
+                        {/* THIS IS FOR EMAIL*/}
+                        <div className="mb-3" style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5em' }}>
+                            <img src={email_icon} alt="email_icon.png" style={{ marginInlineEnd: '0.6em' }} />
+                            <input type="email" className="form-control" onChange={(e) => { setEmail(e.target.value) }} placeholder="Email" name="" id="" />
                         </div>
-                        <div className="mb-3">
-                            <input type="password" className="form-control rounded-0" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" name="" id="" />
+                        {/* THIS IS FOR PASSWORD*/}
+                        <div className="mb-3" style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5em' }}>
+                            <img src={password_icon} alt="password_icon.png" style={{ marginInlineEnd: '0.6em' }} />
+                            <input type="password" className="form-control" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" name="" id="" />
                         </div>
-                        <br></br>
                         <input type="submit" className="form-control bg-success text-white" onClick={submit} />
 
                     </form>
