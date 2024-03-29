@@ -31,6 +31,6 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const collection = mongoose.model("User", userSchema);
+const collection = mongoose.model("logins", userSchema);
 
 module.exports = collection;
