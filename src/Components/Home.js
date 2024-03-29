@@ -1,5 +1,7 @@
 import React from "react"
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function Home (){
     const location=useLocation()
@@ -7,7 +9,7 @@ function Home (){
     return (
         <div className="homepage">
 
-            <h1>Hello {location.state.id} and welcome to the home</h1>
+            <h1>Hello {location.state.id} and welcome to the homepage</h1>
 
         </div>
     )
