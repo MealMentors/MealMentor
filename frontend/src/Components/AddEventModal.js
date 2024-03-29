@@ -10,7 +10,7 @@ export default function ({isOpen, onClose, onEventAdded}) {
     
 
     const onSubmit = (event) =>  {
-        event.preventDefault();
+        event.preventDefault()
         
         onEventAdded({
             title,
@@ -18,18 +18,23 @@ export default function ({isOpen, onClose, onEventAdded}) {
             end
         })
 
-        onClose();
+        onClose()
     }
     return (
         <Modal isOpen={isOpen} onRequestClose={onClose}>
           <form onSubmit={onSubmit}>
-            <input placeholder="Meal" value={title} onChange={e => setTitle(e.target.value)} />
+            <input placeholder="Meal" value={title} onChange={e => setTitle(e.target.value)}/>
+           
             <div>
               <label>Start Date</label>
               <Datetime value={start} onChange={date => setStart(date)} />
+              </div>
+
+              <div>
+              <label>End Date</label>
+            <Datetime value={start} onChange={date => setEnd(date)}/>
             </div>
-            <label>End Date</label>
-            <Datetime value={start} onChange={date => setEnd(date)} />
+            
             <button type="submit">Add Meal</button> {/* Add Meal button */}
           </form>
         </Modal>
