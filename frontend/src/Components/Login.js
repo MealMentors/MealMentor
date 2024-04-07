@@ -11,7 +11,7 @@ function Login() {
     const history = useNavigate();
 
     const [email, setEmail] = useState('')
-    const [name] = useState('')
+    const [name, setName] = useState('')
     const [password, setPassword] = useState('')
 
     async function submit(e) {
