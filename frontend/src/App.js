@@ -7,6 +7,8 @@ import Signup from "./Components/Signup"
 import Schedule from "./Components/Schedule"
 import RecipeDictionary from "./Components/RecipeDictionary"
 import Welcome from "./Components/Welcome"
+import Recommender from "./Components/Recommender"
+import Log from "./Components/Log"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
@@ -22,6 +24,8 @@ function App() {
     <Route path="/home" element={<Home/>}/>
     <Route path="/home/schedule" element={<Schedule/>}/>
     <Route path='/home/catalog' element={<RecipeDictionary/>}/>
+    <Route path='/home/recommend' element={<Recommender/>}/>
+    <Route path='/home/log' element={<Log/>}/>
     
   </Routes>
 </Router>

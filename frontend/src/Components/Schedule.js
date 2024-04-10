@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import AddEventModal from "./AddEventModal"
+import "./Style/Schedule.css"
 //import axios from "axios"
 import moment from "moment"
 
@@ -33,7 +34,6 @@ export default function Schedule() {
 */
   return (
     <section>
-      <button onClick={() => setModalOpen(true)}>Add Meal</button>
 
       <div style={{ position: "relative", zIndex: 0 }}>
         <FullCalendar
@@ -45,12 +45,15 @@ export default function Schedule() {
           //datesSet = {(date) => handleDatesSet(date)}
         />
       </div>
+      <button onClick={() => setModalOpen(true)} id="add-meal-btn">Add Meal</button>
+      <a href="../home"><button id="home-button">Back to Home</button></a>
 
       <AddEventModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)} // Close the modal when requested
         onEventAdded={event => onEventAdded(event)}
       />
+      
     </section>
   );
 }

@@ -37,6 +37,31 @@
     border-radius: 9px;
 }
 
+.button-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#back-to-home-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 59px;
+    color: #000000;
+    background: #dea217;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    border:#855108;
+}
+
+#back-to-home-btn:hover{
+    background: #9f760d;
+}
+
 .macros{
     margin-top: 0px;
     display: flex;
@@ -132,3 +157,4 @@
     background: #eaeaea;
     color: #676767;
 }
+

@@ -1,0 +1,30 @@
+#add-meal-btn {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #4b9d40;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    border: none;
+}
+
+#add-meal-btn:hover {
+    background-color: #3d7d33;
+}
+
+#home-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #dea217;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    border: none;
+}
+
+#home-button:hover {
+    background-color: #9f760d;
+}

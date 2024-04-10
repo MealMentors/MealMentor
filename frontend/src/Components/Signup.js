@@ -40,7 +40,7 @@ function Login() {
             if (response.data === "exist") {
                 showErrorNotification("User already exists");
             } else if (response.data === "notexist") {
-                history("/home", { state: { id: email } })
+                history("/home", { state: { email, name } })
             }
         } catch (error) {
             showErrorNotification("Something went wrong. Please try again.");

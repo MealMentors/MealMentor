@@ -10,9 +10,10 @@ function Login() {
 
     const history = useNavigate();
 
-    const [email, setEmail] = useState('')
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    // const [errorMessage, setErrorMessage] = useState('');
 
     async function submit(e) {
         e.preventDefault();
@@ -24,7 +25,7 @@ function Login() {
             })
                 .then(res => {
                     if (res.data === "exist") {
-                        history("/home", { state: { id: email } })
+                        history("/home", { state: { email, name } })
                     }
                     else if (res.data === "notexist") {
                         alert("User has not sign up")

@@ -303,8 +303,8 @@ export default function FoodSelection() {
     }
     return (
         <div>
-            <label className= "header">
-                Recipe Selection:
+            <label className="header">
+                <h1>Recipe Selection:</h1>
                 <select value={value} onChange={handleChange}>
                     <option value="(Not) Refried Beans">(Not) Refried Beans</option>
                     <option value="Almost Boston Market Creamed Spinach">Almost Boston Market Creamed Spinach</option>
@@ -600,8 +600,8 @@ export default function FoodSelection() {
                     <option value="Zuppa Toscana">Zuppa Toscana</option>
                 </select>
             </label>
-            <label className = "centered">
-                <label className = "macros">
+            <label className="centered">
+                <label className="macros">
                     <p>
                         <label className="macro">Servings: {dict[value].Servings}</label>
                         <label className="macro">Calories: {dict[value].Calories}</label>
@@ -615,8 +615,13 @@ export default function FoodSelection() {
                     <label className="description">Cuisine: {dict[value].Cuisine}</label>
                     <label className="description">Protein: {dict[value].Protein}</label>
                 </p>
-                <p className = "longdescription">Notes: {dict[value].Notes}</p>
+                <p className="longdescription">Notes: {dict[value].Notes}</p>
+
             </label>
+            <div className="button-div">
+                <a href="../home"><button id="back-to-home-btn">Back to Home</button></a>
+            </div>
+
         </div>
     )
 }
