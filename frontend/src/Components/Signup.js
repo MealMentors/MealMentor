@@ -33,14 +33,14 @@ function Login() {
         }
 
         try {
-            const response = await axios.post("http://localhost:3000/signup", {
+            const response = await axios.post("http://localhost:8000/signup", {
                 email, name, password
             });
 
             if (response.data === "exist") {
                 showErrorNotification("User already exists");
             } else if (response.data === "notexist") {
-                history.push("/home", { state: { id: email } });
+                history("/home", { state: { id: email } })
             }
         } catch (error) {
             showErrorNotification("Something went wrong. Please try again.");
@@ -85,7 +85,7 @@ function Login() {
                         <input type="submit" className="form-control bg-success text-white" onClick={submit} />
                     </form>
                     <br />
-                    <p id="loginlink">Already have an account? <Link to="/" className="justify-content-center">Login here!</Link></p>
+                    <p id="loginlink">Already have an account? <Link to="/login" className="justify-content-center">Login here!</Link></p>
                 </div>
             </div>
         </div>
