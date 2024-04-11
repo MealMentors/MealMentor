@@ -17,18 +17,18 @@ function Login() {
 
     async function submit(e) {
         e.preventDefault();
-
         try {
 
             await axios.post("http://localhost:8000/", {
                 email, name, password
             })
-                .then(res => {
-                    if (res.data === "exist") {
-                        history("/home", { state: { email, name } })
+                .then(response => {
+                    if (password === response.data.password) {
+                        alert("Successfully Signed In");
+                        history("/home", { state: { email, name: response.data.name} })
                     }
-                    else if (res.data === "notexist") {
-                        alert("User has not sign up")
+                    else {
+                        alert("Username or Password is Incorrect")
                     }
                 })
                 .catch(e => {
@@ -43,7 +43,6 @@ function Login() {
         }
 
     }
-
 
     return (
         <div className="d-flex justify-content-center align-items-center bg-primary.bg-gradient vh-100">
