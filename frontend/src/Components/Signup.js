@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Style/Signup.css";
 
 import person_icon from "./Assets/person_icon.png";
 import email_icon from "./Assets/email_icon.png";
@@ -64,7 +65,7 @@ function Login() {
                 <div className="signup">
                     <h1 className="d-flex justify-content-center">Signup</h1><br></br>
                     {errorMessage && <p className="text-danger">{errorMessage}</p>}
-                    <form action="POST">
+                    <form action="POST" class="signup-form">
                         {/* THIS IS FOR NAME*/}
                         <div className="mb-3" style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5em' }}>
                             <img src={person_icon} alt="person_icon.png" style={{ marginInlineEnd: '0.6em' }} />
@@ -82,7 +83,8 @@ function Login() {
                             <img src={password_icon} alt="password_icon.png" style={{ marginInlineEnd: '0.6em' }} />
                             <input type="password" className="form-control" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" />
                         </div>
-                        <input type="submit" className="form-control bg-success text-white" onClick={submit} />
+                        <button type="submit" id="signup-btn" onClick={submit}>Sign Up</button>
+
                     </form>
                     <br />
                     <p id="loginlink">Already have an account? <Link to="/login" className="justify-content-center">Login here!</Link></p>

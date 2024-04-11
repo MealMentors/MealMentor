@@ -1,5 +1,6 @@
 // JavaScript source code
-import React from "react";
+import React, { useState } from "react"
+import { Link , useLocation} from "react-router-dom";
 import RecipeSelection from "./Style/RecipeSelection.css";
 
 export default function FoodSelection() {
@@ -619,7 +620,8 @@ export default function FoodSelection() {
 
             </label>
             <div className="button-div">
-                <a href="../home"><button id="back-to-home-btn">Back to Home</button></a>
+                {/* <a href="../home"><button id="back-to-home-btn">Back to Home</button></a> */}
+                <Link to={{pathname: '../home', state: useState}} ><button id="back-to-home-btn">Back to Home</button></Link>
             </div>
 
         </div>
