@@ -3,7 +3,7 @@
 /* Navbar container */
 .navbar {
     width: 100%;
-    background-color: #f2f2f2;
+    background-color: white;
     padding: 10px;
 }
 
@@ -15,16 +15,6 @@
     color: white;
     border: none;
     cursor: pointer;
-}
-
-/* Styling for login button */
-.navbar .login-btn {
-    background-color: #4CAF50;
-}
-
-/* Styling for sign up button */
-.navbar .signup-btn {
-    background-color: #f44336;
 }
 
 .login_button {

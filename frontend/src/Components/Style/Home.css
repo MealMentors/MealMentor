@@ -24,13 +24,13 @@ h1 {
     flex-direction: column;
     justify-content: center;
     margin: 0 10px;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     align-content: center;
     text-align: center;
     width: 45%;
 }
 
-.button-func-div #home-button {
+#home-button {
     /* 
     
     padding: 10px;
@@ -41,10 +41,10 @@ h1 {
     cursor: pointer;
     border: none;
     background-color: red; */
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
-    background-color: #c2fbd7;
+  background-color: #c2fbd7;
   border-radius: 100px;
   box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
   color: green;
@@ -62,7 +62,7 @@ h1 {
   touch-action: manipulation;
 }
 
-.button-func-div #home-button:hover {
+#home-button:hover {
     box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
 }

@@ -5,7 +5,7 @@ import RecipeSelection from "./Style/RecipeSelection.css";
 
 export default function FoodSelection() {
     var dict = {
-        "(Not) Refried Beans": { Servings: "9", Calories: "86", ProteinGrams: "10", FatGrams: "0", CarbsGrams: "27", Meal: "Protein", Cuisine: "Mexican", Protein: "Beans", Notes: "None" },
+        "(Not) Refried Beans": { Servings: "9", Calories: "86", ProteinGrams: "10", FatGrams: "0", CarbsGrams: "27", Meal: "Protein", Cuisine: "Mexican", Protein: "Beans", Notes: "None", Link: "http://www.budgetbytes.com/2011/08/not-refried-beans/" },
         "Almost Boston Market Creamed Spinach": { Servings: "4", Calories: "382", ProteinGrams: "18", FatGrams: "27", CarbsGrams: "18", Meal: "Side", Cuisine: "Southern", Protein: "None", Notes: "One serving is very small" },
         "Apple Oat Greek Yogurt Muffins": { Servings: "12", Calories: "115", ProteinGrams: "5", FatGrams: "2", CarbsGrams: "20", Meal: "Bread", Cuisine: "American", Protein: "Greek yogurt", Notes: "None" },
         "Asian Pork with Mushrooms": { Servings: "7", Calories: "292", ProteinGrams: "33", FatGrams: "5", CarbsGrams: "27", Meal: "Entree", Cuisine: "Asian", Protein: "Pork", Notes: "None" },
@@ -302,6 +302,11 @@ export default function FoodSelection() {
     const handleChange = (event) => {
         setValue(event.target.value);
     }
+
+    //Get the user's name from the previous page
+    const location=useLocation()
+    const userName = location.state && location.state.name ? location.state.name : '';
+
     return (
         <div>
             <label className="header">
@@ -617,6 +622,7 @@ export default function FoodSelection() {
                     <label className="description">Protein: {dict[value].Protein}</label>
                 </p>
                 <p className="longdescription">Notes: {dict[value].Notes}</p>
+                <p className="description">Link: {dict[value].Link}</p>
 
             </label>
             <div className="button-div">
