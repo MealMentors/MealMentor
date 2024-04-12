@@ -1,3 +1,5 @@
+//addeventmodal.js
+
 import React, {useRef, useState} from 'react'
 import Modal from 'react-modal'
 import Datetime from 'react-datetime'
@@ -29,11 +31,11 @@ export default function ({isOpen, onClose, onEventAdded}) {
               <label>Start Date</label>
               <Datetime value={start} onChange={date => setStart(date)} />
               </div>
-
               <div>
-              <label>End Date</label>
-            <Datetime value={start} onChange={date => setEnd(date)}/>
-            </div>
+                <label>End Date</label>
+                <Datetime value={end} onChange={date => setEnd(date)} />
+                </div>
+            
             
             <button type="submit">Add Meal</button> {/* Add Meal button */}
           </form>
