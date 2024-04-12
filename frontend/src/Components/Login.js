@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Style/Login.css";
 
 import email_icon from "./Assets/email_icon.png";
 import password_icon from "./Assets/password_icon.png";
@@ -10,24 +11,25 @@ function Login() {
 
     const history = useNavigate();
 
-    const [email, setEmail] = useState('')
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    // const [errorMessage, setErrorMessage] = useState('');
 
     async function submit(e) {
         e.preventDefault();
-
         try {
 
             await axios.post("http://localhost:8000/", {
                 email, name, password
             })
-                .then(res => {
-                    if (res.data === "exist") {
-                        history("/home", { state: { id: email } })
+                .then(response => {
+                    if (password === response.data.password) {
+                        // alert("Successfully Signed In");
+                        history("/home", { state: { email, name: response.data.name} })
                     }
-                    else if (res.data === "notexist") {
-                        alert("User has not sign up")
+                    else {
+                        alert("Username or Password is Incorrect")
                     }
                 })
                 .catch(e => {
@@ -43,7 +45,6 @@ function Login() {
 
     }
 
-
     return (
         <div className="d-flex justify-content-center align-items-center bg-primary.bg-gradient vh-100">
             <div className="bg-white p-3 rounded w-25">
@@ -51,7 +52,7 @@ function Login() {
 
                     <h1 className="d-flex justify-content-center">Login</h1><br></br>
 
-                    <form action="POST">
+                    <form action="POST" class="login-form">
                         {/* THIS IS FOR EMAIL*/}
                         <div className="mb-3" style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5em' }}>
                             <img src={email_icon} alt="email_icon.png" style={{ marginInlineEnd: '0.6em' }} />
@@ -62,7 +63,9 @@ function Login() {
                             <img src={password_icon} alt="password_icon.png" style={{ marginInlineEnd: '0.6em' }} />
                             <input type="password" className="form-control" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" name="" id="" />
                         </div>
-                        <input type="submit" className="form-control bg-success text-white" onClick={submit} />
+                        {/* <input type="submit" className="form-control bg-success text-white" onClick={submit} /> */}
+
+                        <button type="submit" id="login-btn" onClick={submit}>Login</button>
 
                     </form>
                     <br />

@@ -3,7 +3,7 @@
 /* Navbar container */
 .navbar {
     width: 100%;
-    background-color: #f2f2f2;
+    background-color: white;
     padding: 10px;
 }
 
@@ -17,12 +17,45 @@
     cursor: pointer;
 }
 
-/* Styling for login button */
-.navbar .login-btn {
-    background-color: #4CAF50;
+.login_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    height: 60px;
+    background: #eaeaea;
+    border-radius: 20px;
+    font-size: 24px;
+    margin-right: 10px;
+    justify-content: space-around;
+    font-weight: bold;
 }
 
-/* Styling for sign up button */
-.navbar .signup-btn {
-    background-color: #f44336;
+.login_signup {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: 20px;
+}
+
+.column_align {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.right_justified
+{
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.title {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 20px;
 }

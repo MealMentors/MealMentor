@@ -14,10 +14,15 @@ app.post("/", async (req, res) => {
     const{email,name,password}=req.body
 
     try{
-        const check=await collection.findOne({email:email})
+        const check = await collection.findOne({email:email})
 
         if(check){
-            res.json("exist")
+            const userData = {  //Creates a userData object with which to compare and use email, name, and password
+                email: email,
+                name: check.name,
+                password: check.password
+            } 
+            res.json(userData) //Returns object, access with response.data.email format
         }
         else{
             res.json("notexist")
