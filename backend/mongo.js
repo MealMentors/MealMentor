@@ -31,6 +31,39 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const collection = mongoose.model("users", userSchema);
+const mealLog = new mongoose.Schema({
+  userId: {
+      type: String,
+      required: true
+  },
+  meal: {
+      type: String,
+      required: false
+  }
 
-module.exports = collection;
+});
+
+const mealSchedule = new mongoose.Schema({
+  userId: {
+      type: String,
+      required: true
+  },
+  date: {
+      type: String,
+      required: false
+  },
+  time: {
+      type: String,
+      required: true
+  },
+  meal: {
+    type: String,
+    required: true
+  }
+});
+
+const usercollection = mongoose.model("users", userSchema);
+const logcollection = mongoose.model("mealLog", mealLog);
+const schedulecollection = mongoose.model("mealSchedule", mealSchedule);
+
+module.exports = {usercollection,logcollection,schedulecollection};

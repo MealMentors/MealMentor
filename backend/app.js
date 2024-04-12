@@ -1,5 +1,5 @@
 const express = require("express");
-const collection = require("./mongo");
+const usercollection = require("./mongo");
 const cors = require("cors");
 const app = express();
 app.use(express.json());
@@ -14,7 +14,7 @@ app.post("/", async (req, res) => {
     const{email,name,password}=req.body
 
     try{
-        const check = await collection.findOne({email:email})
+        const check = await usercollection.findOne({email:email})
 
         if(check){
             const userData = {  //Creates a userData object with which to compare and use email, name, and password
@@ -43,13 +43,13 @@ app.post("/signup", async (req, res) => {
     };
 
     try {
-        const check = await collection.findOne({ email: email });
+        const check = await usercollection.findOne({ email: email });
 
         if (check) {
             res.json("exist");
         } else {
             res.json("notexist");
-            await collection.create(userData);
+            await usercollection.create(userData);
         }
     } catch (error) {
         res.json("fail");
