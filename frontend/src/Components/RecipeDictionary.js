@@ -622,7 +622,7 @@ export default function FoodSelection() {
                     <label className="description">Protein: {dict[value].Protein}</label>
                 </p>
                 <p className="longdescription">Notes: {dict[value].Notes}</p>
-                <p className="linkdescription">Link: <a href={dict[value].Link}>{dict[value].Link}</a></p>
+                <p className="linkdescription"><a href={dict[value].Link}>Recipe Link</a></p>
 
             </label>
             <div className="button-div">
