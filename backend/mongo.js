@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: false
+        required: true
     },
     password: {
         type: String,
@@ -38,7 +38,7 @@ const mealLog = new mongoose.Schema({
   },
   meal: {
       type: String,
-      required: false
+      required: true
   }
 
 });
