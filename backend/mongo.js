@@ -44,15 +44,11 @@ const mealLog = new mongoose.Schema({
 });
 
 const mealSchedule = new mongoose.Schema({
-  userId: {
+  email: {
       type: String,
-      required: true
+      required: false
   },
   date: {
-      type: String,
-      required: true
-  },
-  time: {
       type: String,
       required: true
   },
