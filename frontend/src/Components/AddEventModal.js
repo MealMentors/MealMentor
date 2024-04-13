@@ -22,8 +22,6 @@ export default function ({isOpen, onClose, onEventAdded}) {
         event.preventDefault()
         
         onEventAdded({
-            email,  
-            meal,
             date
         })
 
@@ -61,7 +59,7 @@ export default function ({isOpen, onClose, onEventAdded}) {
             <input type="meal" onChange={e => setMeal(e.target.value)} placeholder="Meal"/>
             <div>
               <label>Date</label>
-              <Datetime value={date} onChange={e => setDate(e.target.value)} placeholder="Date" />
+              <Datetime value={date} onChange={date => setDate(date)} placeholder="Date" />
               
               </div>           
 
