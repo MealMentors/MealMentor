@@ -56,9 +56,25 @@ app.post("/signup", async (req, res) => {
     }
 });
 
+app.post("/schedule", async (req, res) => {
+    const { userId, date, time, meal } = req.body;
+    const userData = {  //Creates a userData object with which to compare and use email, name, and password
+        userId: userId,
+        date: date,
+        time: time,
+        meal: meal
+    } 
+    try {
+        //const check = await collection.schedulecollection.findOne({ userId: userId });
+        
+        collection.schedulecollection.create(userData);
+
+    } catch (error) {
+        res.json("fail");
+    }
+});
 
 app.use("/api/calendar", require("./controllers/calendarcontroller"))
-app.listen(8000, () => {
+app.listen(8000, async () => {
     console.log("port connected");
-    console.log(collection.usercollection);
 });
