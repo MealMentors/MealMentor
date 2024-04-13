@@ -1,18 +1,28 @@
-import React, {useRef, useState} from 'react'
-import Modal from 'react-modal'
-import Datetime from 'react-datetime'
+import React, {useRef, useState, useEffect} from 'react';
+import useLocation from "react-router-dom";
+import Modal from 'react-modal';
+import Datetime from 'react-datetime';
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Style/Home.css";
 
 export default function ({isOpen, onClose, onEventAdded}) {
 
-    const [userId, setUserId] = useState("");
+
     const [meal, setMeal] = useState("");
     const [date, setDate] = useState(new Date());
 
+    // Fetching user profile information from local storage or initializing it as an empty object
+    const userProfile = JSON.parse(localStorage.getItem("users")) || {};
+
+    // State to hold the user's name
+    const [email, setEmail] = useState(userProfile.email || "");
+    
     const onSubmit = (event) =>  {
         event.preventDefault()
         
         onEventAdded({
+            email,  
             meal,
             date
         })
@@ -25,7 +35,7 @@ export default function ({isOpen, onClose, onEventAdded}) {
 
       try {
           const response = await axios.post("http://localhost:8000/schedule", {
-              userId, date, meal
+              email, date, meal
           });
 
           
@@ -52,6 +62,7 @@ export default function ({isOpen, onClose, onEventAdded}) {
             <div>
               <label>Date</label>
               <Datetime value={date} onChange={e => setDate(e.target.value)} placeholder="Date" />
+              
               </div>           
 
             <button type="submit" onClick={submit}>Add Meal</button>

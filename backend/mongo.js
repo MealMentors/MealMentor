@@ -44,7 +44,7 @@ const mealLog = new mongoose.Schema({
 });
 
 const mealSchedule = new mongoose.Schema({
-  userId: {
+  email: {
       type: String,
       required: false
   },

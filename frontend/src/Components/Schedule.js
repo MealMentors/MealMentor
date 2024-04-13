@@ -7,6 +7,7 @@ import "./Style/Schedule.css"
 import moment from "moment"
 
 export default function Schedule() {
+  
   const [modalOpen, setModalOpen] = useState(false)
   const [events, setEvents] = useState([])
   const calendarRef = useRef(null)

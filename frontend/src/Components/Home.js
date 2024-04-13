@@ -10,13 +10,12 @@ function Home() {
 
     // State to hold the user's name
     const [userName, setUserName] = useState(userProfile.name || "");
-
     useEffect(() => {
         // Update the user's name when it changes in the location state
         if (location.state && location.state.name) {
             setUserName(location.state.name);
             // Update the local storage with the new user profile information
-            localStorage.setItem("users", JSON.stringify({ ...userProfile, name: location.state.name }));
+            localStorage.setItem("users", JSON.stringify({ ...userProfile, name: location.state.name}));
         }
     }, [location.state]);
 

@@ -57,9 +57,9 @@ app.post("/signup", async (req, res) => {
 });
 
 app.post("/schedule", async (req, res) => {
-    const { userId, date, time, meal } = req.body;
+    const { email, date, time, meal } = req.body;
     const userData = {  //Creates a userData object with which to compare and use email, name, and password
-        userId: userId,
+        email: email,
         date: date,
         time: time,
         meal: meal
