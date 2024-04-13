@@ -21,7 +21,13 @@ function Home() {
     }, [location.state]);
 
     return (
+        
         <div className="homepage">
+            <div className="logout-button">
+                <Link to="/login">
+                    <button id="logout-button">Logout</button>
+                </Link>
+            </div>
             <h1>Hello {userName && ` ${userName}`}, and welcome to the homepage!</h1>
             <div className="button-func-div">
                 <Link to="/home/catalog">
