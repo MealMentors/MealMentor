@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: false
+        required: true
     },
     password: {
         type: String,
@@ -31,6 +31,39 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const collection = mongoose.model("users", userSchema);
+const mealLog = new mongoose.Schema({
+  userId: {
+      type: String,
+      required: true
+  },
+  meal: {
+      type: String,
+      required: true
+  }
 
-module.exports = collection;
+});
+
+const mealSchedule = new mongoose.Schema({
+  userId: {
+      type: String,
+      required: true
+  },
+  date: {
+      type: String,
+      required: true
+  },
+  time: {
+      type: String,
+      required: true
+  },
+  meal: {
+    type: String,
+    required: true
+  }
+});
+
+const usercollection = mongoose.model("users", userSchema);
+const logcollection = mongoose.model("meallog", mealLog);
+const schedulecollection = mongoose.model("mealschedule", mealSchedule);
+
+module.exports = {usercollection,logcollection,schedulecollection};
