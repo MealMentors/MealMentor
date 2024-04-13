@@ -50,7 +50,7 @@ const mealSchedule = new mongoose.Schema({
   },
   date: {
       type: String,
-      required: false
+      required: true
   },
   time: {
       type: String,
@@ -63,7 +63,7 @@ const mealSchedule = new mongoose.Schema({
 });
 
 const usercollection = mongoose.model("users", userSchema);
-const logcollection = mongoose.model("mealLog", mealLog);
-const schedulecollection = mongoose.model("mealSchedule", mealSchedule);
+const logcollection = mongoose.model("meallog", mealLog);
+const schedulecollection = mongoose.model("mealschedule", mealSchedule);
 
 module.exports = {usercollection,logcollection,schedulecollection};
