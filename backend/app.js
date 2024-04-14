@@ -119,15 +119,15 @@ app.post("/schedule", async (req, res) => {
     }
 });
 
-app.post("/recommendercal", async (req, res) => {
-    const { RecipeName,Website,Servings,Calories,ProteinG,Fat,Carbs,Type,Cuisine,CaloriesOp,ProteinGOp,FatOp,CarbsOp,CaloriesVal,ProteinGVal,FatVal,CarbsVal, } = req.body;
+app.post("/recommender", async (req, res) => {
+    const { RecipeName,Website,Servings,Type,Cuisine,Calories,ProteinG,Fat,Carbs,CaloriesOp,ProteinGOp,FatOp,CarbsOp,CaloriesVal,ProteinGVal,FatVal,CarbsVal, } = req.body;
     const userData = {  //Creates a userData object with which to compare and use email, name, and password
-        RecipeName:RecipeName,
-        Website:Website,
-        Servings:Servings,
-        Calories:Calories,        ProteinG:ProteinG,        Fat:Fat,        Carbs:Carbs,
-        Type:Type,
-        Cuisine: Cuisine, 
+        //RecipeName:RecipeName,
+        //Website:Website,
+        //Servings:Servings,
+        //Type:Type,
+        //Cuisine: Cuisine,
+        Calories:Calories,ProteinG:ProteinG,Fat:Fat,        Carbs:Carbs, 
         CaloriesOp:CaloriesOp,        ProteinGOp:ProteinGOp,        FatOp:FatOp,        CarbsOp:CarbsOp,
         CaloriesVal:CaloriesVal,        ProteinGVal:ProteinGVal,        FatVal:FatVal,        CarbsVal:CarbsVal,
     } 
@@ -141,6 +141,32 @@ app.post("/recommendercal", async (req, res) => {
         res.json("fail");
     }
 });
+/*
+async function submit(e) {
+    e.preventDefault();
+
+    try {
+        const response = await axios.post("http://localhost:8000/recommender", {
+            Calories,ProteinG,Fat,Carbs,CaloriesOp,ProteinGOp,FatOp,CarbsOp,CaloriesVal,ProteinGVal,FatVal,CarbsVal
+        });
+
+        alert(response);
+
+    } catch (error) {
+        showErrorNotification("Something went wrong. Please try again.");
+        console.error(error);
+    }
+}
+
+function showErrorNotification(message) {
+    const notificationElement = document.createElement("div");
+    notificationElement.classList.add("error-notification");
+    notificationElement.textContent = message;
+    document.body.appendChild(notificationElement);
+    setTimeout(() => {
+        document.body.removeChild(notificationElement);
+    }, 5000);
+}*/
 
 app.use("/api/calendar", require("./controllers/calendarcontroller"))
 app.listen(8000, async () => {

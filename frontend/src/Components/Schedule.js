@@ -4,7 +4,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import AddEventModal from "./AddEventModal"
 import "./Style/Schedule.css"
-//import axios from "axios"
+import axios from "axios"
 import moment from "moment"
 
 export default function Schedule() {
@@ -20,7 +20,7 @@ export default function Schedule() {
       title: event.title
     })
   }
-  /*
+  
     async function handleEventAdd(data) {
       console.log(data.event)
       await axios.post("/api/calender/create-event", data.event)
@@ -29,10 +29,9 @@ export default function Schedule() {
     async function handleDatesSet(data) {
       const response = await axios.get
       ("/api/calender/get-events?start="+ moment(data.start).toISOString()+
-      "&end="+
-      moment(data.end).toISOString())
+      "&end=")
     }
-  */
+  
   return (
     <section>
 
@@ -51,8 +50,8 @@ export default function Schedule() {
           events={events}
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
-        //eventAdd={(event) => handleEventAdd(event)}
-        //datesSet = {(date) => handleDatesSet(date)}
+          eventAdd={(event) => handleEventAdd(event)}
+          datesSet = {(date) => handleDatesSet(date)}
         />
       </div>
 
