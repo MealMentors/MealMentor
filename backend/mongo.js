@@ -31,18 +31,6 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const mealLog = new mongoose.Schema({
-  userId: {
-      type: String,
-      required: true
-  },
-  meal: {
-      type: String,
-      required: true
-  }
-
-});
-
 const mealSchedule = new mongoose.Schema({
   email: {
       type: String,
@@ -72,34 +60,37 @@ const recipes = new mongoose.Schema({
     required: false
   },
   Calories: {
-    type: String,
+    type: Number,
     required: false
   },
-  Protein: {
-    type: String,
+  ProteinG: {
+    type: Number,
     required: false
   },
   Fat: {
-    type: String,
+    type: Number,
     required: false
   },
   Carbs: {
+    type: Number,
+    required: false
+  },
+  Type: {
     type: String,
     required: false
   },
-  Servings: {
+  Cuisine: {
     type: String,
     required: false
   },
-  Protein2: {
+  ProteinType: {
     type: String,
     required: false
   }
 });
 
 const usercollection = mongoose.model("users", userSchema);
-const logcollection = mongoose.model("meallogs", mealLog);
 const schedulecollection = mongoose.model("mealschedules", mealSchedule);
 const recipecollection = mongoose.model("recipes", recipes);
 
-module.exports = {usercollection,logcollection,schedulecollection,recipecollection};
+module.exports = {usercollection,schedulecollection,recipecollection};
