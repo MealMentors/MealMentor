@@ -46,23 +46,40 @@ const Welcome = () => {
                     </li>
                 </ul>
             </navbar>
-            <br></br><br></br><br></br><br></br>
-            <h1>Welcome to MealMentor!</h1>
-            <div className = "heading2">
-                MealMentor is a web-powered application designed to help you eat healthy!<br></br><br></br>
-                MealMentor features:
+            <div className="center">
+                <br></br><br></br><br></br><br></br>
+                <h1>Welcome to MealMentor!</h1>
             </div>
-            <ul className="bulletpoint">
-                <li>Meal Scheduling</li>
-                <li>Personalized Meal Recommendations</li>
-                <li>A meal catalog with over 300 recipes</li>
-                <li>And more!</li>
-            </ul>
-            <div className="heading2"><br></br>
-                Start a new account for free today!
+            <div className = "center">
+                <div className="heading2">MealMentor is a web-powered application designed to help you eat healthy!</div><br></br>
+                <div className="underlinedheading2">MealMentor Features:</div>
             </div>
-
-            <div className="copyright">Copyright &copy; 2024 by MealMentor Team. All rights reserved.</div>
+            <div className="center">
+                <div className = "heading2">
+                    Meal Scheduling
+                </div>
+            </div>
+            <div className="center">
+                <div className="heading2">
+                    Personalized Meal Recommendations
+                </div>
+            </div>
+            <div className="center">
+                <div className="heading2">
+                    A meal catalog with over 300 recipes
+                </div>
+            </div>
+            <div className="center">
+                <div className="heading2">
+                    And more!
+                </div>
+            </div>
+            <div className="center">
+                <div className="heading2"><br></br>
+                    Start a new account for free today!
+                </div>
+                <div className="copyright">Copyright &copy; 2024 by MealMentor Team. All rights reserved.</div>
+            </div>
         </div>
 
     );
