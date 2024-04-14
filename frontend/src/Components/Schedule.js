@@ -20,7 +20,7 @@ export default function Schedule() {
       title: event.title
     })
   }
-  
+  /*
     async function handleEventAdd(data) {
       console.log(data.event)
       await axios.post("/api/calender/create-event", data.event)
@@ -30,7 +30,7 @@ export default function Schedule() {
       const response = await axios.get
       ("/api/calender/get-events?start="+ moment(data.start).toISOString()+
       "&end=")
-    }
+    }*/
   
   return (
     <section>
@@ -50,8 +50,8 @@ export default function Schedule() {
           events={events}
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
-          eventAdd={(event) => handleEventAdd(event)}
-          datesSet = {(date) => handleDatesSet(date)}
+          //eventAdd={(event) => handleEventAdd(event)}
+          //datesSet = {(date) => handleDatesSet(date)}
         />
       </div>
 
