@@ -10,18 +10,23 @@ function Home() {
 
     // State to hold the user's name
     const [userName, setUserName] = useState(userProfile.name || "");
-
     useEffect(() => {
         // Update the user's name when it changes in the location state
         if (location.state && location.state.name) {
             setUserName(location.state.name);
             // Update the local storage with the new user profile information
-            localStorage.setItem("users", JSON.stringify({ ...userProfile, name: location.state.name }));
+            localStorage.setItem("users", JSON.stringify({ ...userProfile, name: location.state.name}));
         }
     }, [location.state]);
 
     return (
+        
         <div className="homepage">
+            <div className="logout-button">
+                <Link to="/login">
+                    <button id="logout-button">Logout</button>
+                </Link>
+            </div>
             <h1>Hello {userName && ` ${userName}`}, and welcome to the homepage!</h1>
             <div className="button-func-div">
                 <Link to="/home/catalog">
