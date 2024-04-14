@@ -46,7 +46,7 @@ const mealLog = new mongoose.Schema({
 const mealSchedule = new mongoose.Schema({
   email: {
       type: String,
-      required: false
+      required: true
   },
   meal: {
     type: String,
@@ -61,7 +61,7 @@ const mealSchedule = new mongoose.Schema({
 const recipes = new mongoose.Schema({
   RecipeName: {
       type: String,
-      required: false
+      required: true
   },
   Website: {
       type: String,
@@ -93,7 +93,7 @@ const recipes = new mongoose.Schema({
   },
   Protein2: {
     type: String,
-    required: true
+    required: false
   }
 });
 
