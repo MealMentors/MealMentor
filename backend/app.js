@@ -78,28 +78,7 @@ app.post("/accountdel", async (req, res) => {
         res.json("fail");
     }
 });
-/*
-async function accountdel(e) {
-    e.preventDefault();
 
-    try {
-        const response = await axios.post("http://localhost:8000/signup", {
-            email, name, password
-        });
-
-        if (response.data === "exist") {
-            history("/home", { state: { email, name } })
-            alert("Account deleted");
-            return;
-        } else if (response.data === "notexist") {
-            showErrorNotification("User already exists");
-            alert("User already exists");
-        }
-    } catch (error) {
-        showErrorNotification("Something went wrong. Please try again.");
-        console.error(error);
-    }
-}*/
 
 app.post("/schedule", async (req, res) => {
     const { email, date, time, meal } = req.body;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import DeleteAccountModal from "./DeleteAccountModal";
+import axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style/AccountScreen.css";
 
@@ -8,8 +9,8 @@ const AccountScreen = () => {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const userProfile = JSON.parse(localStorage.getItem("users")) || {};
-  const [userName, setUserName] = useState(userProfile.name || "");
-  const [userEmail, setUserEmail] = useState(userProfile.email || "");
+  const [name, setUserName] = useState(userProfile.name || "");
+  const [email, setUserEmail] = useState(userProfile.email || "");
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -29,6 +30,18 @@ const AccountScreen = () => {
     }
   }, [location.state, userProfile]);
 
+  async function accountdel() {
+    //e.preventDefault();
+    try {
+        const response = await axios.post("http://localhost:8000/accountdel", {
+            email, name
+        });
+
+        alert("Account deleted");
+    } catch (error) {
+        console.error(error);
+    }
+  }
   return (
     <div>
       <Link to="/home">
@@ -38,11 +51,11 @@ const AccountScreen = () => {
       <div className="account-container">
         <p>Name</p>
         <div className="account-box">
-          <span className="placeholder-text">{userName}</span>
+          <span className="placeholder-text">{name}</span>
         </div>
         <p>Email</p>
         <div className="account-box">
-          <span className="placeholder-text">{userEmail}</span>
+          <span className="placeholder-text">{email}</span>
         </div>
       </div>
       <button id="deletemodal-button" onClick={handleOpenModal}>Delete Account</button>
@@ -52,6 +65,7 @@ const AccountScreen = () => {
         onDelete={() => {
           // Logic to delete account can be handled here
           console.log("Deleting account...");
+          accountdel();
           // Close the modal after deletion
           setShowModal(false);
         }}
