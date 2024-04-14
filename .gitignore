@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/.vs/MealMentor/FileContentIndex
+/frontend/node_modules
+/.vs
+*.pack
+/.idea

@@ -45,14 +45,16 @@ export default function Schedule() {
           
         </div>
 
-        <FullCalendar
-          ref={calendarRef}
-          events={events}
-          plugins={[dayGridPlugin]}
-          initialView="dayGridMonth"
-          //eventAdd={(event) => handleEventAdd(event)}
-          //datesSet = {(date) => handleDatesSet(date)}
-        />
+        <div className = "calendar">
+          <FullCalendar
+            ref={calendarRef}
+            events={events}
+            plugins={[dayGridPlugin]}
+            initialView="dayGridMonth"
+            //eventAdd={(event) => handleEventAdd(event)}
+            //datesSet = {(date) => handleDatesSet(date)}
+          />
+        </div>
       </div>
 
       <AddEventModal
