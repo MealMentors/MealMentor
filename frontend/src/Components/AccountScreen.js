@@ -47,15 +47,15 @@ const AccountScreen = () => {
       </div>
       <button id="deletemodal-button" onClick={handleOpenModal}>Delete Account</button>
       <DeleteAccountModal
-  showModal={showModal}
-  onClose={() => setShowModal(false)}
-  onDelete={() => {
-    // Logic to delete account can be handled here
-    console.log("Deleting account...");
-    // Close the modal after deletion
-    setShowModal(false);
-  }}
-/>
+        showModal={showModal}
+        onClose={() => setShowModal(false)}
+        onDelete={() => {
+          // Logic to delete account can be handled here
+          console.log("Deleting account...");
+          // Close the modal after deletion
+          setShowModal(false);
+        }}
+      />
     </div>
   );
 };
