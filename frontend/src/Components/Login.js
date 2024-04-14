@@ -44,7 +44,7 @@ function Login() {
         <div className="d-flex justify-content-center align-items-center bg-primary.bg-gradient vh-100">
             <div className="bg-white p-3 rounded w-25">
                 <div className="login">
-
+                    <Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>
                     <h1 className="d-flex justify-content-center">Login</h1><br></br>
 
                     <form action="POST" class="login-form">

@@ -18,10 +18,11 @@ function Home() {
             localStorage.setItem("users", JSON.stringify({ ...userProfile, name: location.state.name}));
         }
     }, [location.state]);
-
+    document.body.style.height = "720px";
     return (
         
         <div className="homepage">
+            <Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>
             <div className="logout-button">
                 <Link to="/login">
                     <button id="logout-button">Logout</button>
