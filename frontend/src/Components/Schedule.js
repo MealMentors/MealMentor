@@ -1,8 +1,10 @@
+//schedule.js
 import React, { useRef, useState } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import AddEventModal from "./AddEventModal"
-//import axios from "axios"
+import "./Style/Schedule.css"
+import axios from "axios"
 import moment from "moment"
 
 export default function Schedule() {
@@ -13,37 +15,46 @@ export default function Schedule() {
   const onEventAdded = (event) => {
     const calendarApi = calendarRef.current.getApi()
     calendarApi.addEvent({
-      start:moment(event.start).toDate(), 
+      start: moment(event.start).toDate(),
       end: moment(event.end).toDate(),
       title: event.title
     })
   }
-/*
-  async function handleEventAdd(data) {
-    console.log(data.event)
-    await axios.post("/api/calender/create-event", data.event)
-  }
-
-  async function handleDatesSet(data) {
-    const response = await axios.get
-    ("/api/calender/get-events?start="+ moment(data.start).toISOString()+
-    "&end="+
-    moment(data.end).toISOString())
-  }
-*/
+  /*
+    async function handleEventAdd(data) {
+      console.log(data.event)
+      await axios.post("/api/calender/create-event", data.event)
+    }
+  
+    async function handleDatesSet(data) {
+      const response = await axios.get
+      ("/api/calender/get-events?start="+ moment(data.start).toISOString()+
+      "&end=")
+    }*/
+  
   return (
     <section>
-      <button onClick={() => setModalOpen(true)}>Add Meal</button>
 
       <div style={{ position: "relative", zIndex: 0 }}>
-        <FullCalendar
-          ref={calendarRef}
-          events={events}
-          plugins={[dayGridPlugin]}
-          initialView="dayGridMonth"
-          //eventAdd={(event) => handleEventAdd(event)}
-          //datesSet = {(date) => handleDatesSet(date)}
-        />
+        <div className="schedule-header">
+          
+            <a href="../home"><button id="home-button-btn">Back to Home</button></a>
+          
+          
+            <button onClick={() => setModalOpen(true)} id="add-meal-btn">Add Meal</button>
+          
+        </div>
+
+        <div className = "calendar">
+          <FullCalendar
+            ref={calendarRef}
+            events={events}
+            plugins={[dayGridPlugin]}
+            initialView="dayGridMonth"
+            //eventAdd={(event) => handleEventAdd(event)}
+            //datesSet = {(date) => handleDatesSet(date)}
+          />
+        </div>
       </div>
 
       <AddEventModal
@@ -51,6 +62,7 @@ export default function Schedule() {
         onClose={() => setModalOpen(false)} // Close the modal when requested
         onEventAdded={event => onEventAdded(event)}
       />
+
     </section>
   );
 }

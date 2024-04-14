@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        required: false
+        required: true
     },
     password: {
         type: String,
@@ -31,6 +31,44 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const collection = mongoose.model("logins", userSchema);
+const mealSchedule = new mongoose.Schema({
+  email: {
+      type: String,
+      required: true
+  },
+  date: {
+    type: String,
+    required: false
+  },
+  meal: {
+    type: String,
+    required: false
+  },
+  Servings: {    type: String,    required: false  },  
+  Calories: {    type: Number,    required: false  },
+  ProteinG: {    type: Number,    required: false  },
+  Fat: {    type: Number,    required: false  },
+  Carbs: {    type: Number,    required: false  },
+  Type: {    type: String,    required: false  },
+  Cuisine: {    type: String,    required: false  },
+  ProteinType: {    type: String,    required: false  }
+});
 
-module.exports = collection;
+const recipes = new mongoose.Schema({
+  RecipeName: {      type: String,      required: true  },
+  Website: {      type: String,      required: true  },
+  Servings: {    type: String,    required: false  },  
+  Calories: {    type: Number,    required: false  },
+  ProteinG: {    type: Number,    required: false  },
+  Fat: {    type: Number,    required: false  },
+  Carbs: {    type: Number,    required: false  },
+  Type: {    type: String,    required: false  },
+  Cuisine: {    type: String,    required: false  },
+  ProteinType: {    type: String,    required: false  }
+});
+
+const usercollection = mongoose.model("users", userSchema);
+const schedulecollection = mongoose.model("mealschedules", mealSchedule);
+const recipecollection = mongoose.model("recipes", recipes);
+
+module.exports = {usercollection,schedulecollection,recipecollection};
