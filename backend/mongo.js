@@ -38,11 +38,11 @@ const mealSchedule = new mongoose.Schema({
   },
   date: {
     type: String,
-    required: true
+    required: false
   },
   meal: {
     type: String,
-    required: true
+    required: false
   },
   Servings: {    type: String,    required: false  },  
   Calories: {    type: Number,    required: false  },

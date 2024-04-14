@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style/Home.css";
 
@@ -19,12 +20,36 @@ function Home() {
         }
     }, [location.state]);
 
+    async function logout(e) {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post("http://localhost:8000/logout", {
+                
+            });
+
+            
+        } catch (error) {
+            showErrorNotification("Something went wrong. Please try again.");
+            console.error(error);
+        }
+    }
+
+    function showErrorNotification(message) {
+        const notificationElement = document.createElement("div");
+        notificationElement.classList.add("error-notification");
+        notificationElement.textContent = message;
+        document.body.appendChild(notificationElement);
+        setTimeout(() => {
+            document.body.removeChild(notificationElement);
+        }, 5000);
+    }
     return (
         
         <div className="homepage">
             <div className="logout-button">
                 <Link to="/login">
-                    <button id="logout-button">Logout</button>
+                    <button id="logout-button"onClick={logout}>Logout</button>
                 </Link>
             </div>
             <h1>Hello {userName && ` ${userName}`}, and welcome to the homepage!</h1>
