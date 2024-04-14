@@ -64,9 +64,6 @@ function Home() {
                 <Link to="/home/recommend">
                     <button id="home-button">Recommend me a meal</button>
                 </Link>
-                <Link to="/home/log">
-                    <button id="home-button">Logging</button>
-                </Link>
                 <div className="account-button">
                 <Link to="/home/accountscreen">
                     <button id="account-button">Account</button>
