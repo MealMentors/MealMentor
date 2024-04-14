@@ -31,6 +31,8 @@ const Welcome = () => {
         }
     }, [location.state]);
 
+    document.body.style.height = "720px";
+
     return (
         <div>
             <navbar className="column_align">

@@ -5,6 +5,7 @@ import RecipeSelection from "./Style/RecipeSelection.css";
 
 export default function FoodSelection() {
     //<Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>
+    document.body.style.height = "850px";
     var dict = {
         "(Not) Refried Beans": { Servings: "9", Calories: "86", ProteinGrams: "10", FatGrams: "0", CarbsGrams: "27", Meal: "Protein", Cuisine: "Mexican", Protein: "Beans", Notes: "None", Link: "http://www.budgetbytes.com/2011/08/not-refried-beans/" },
         "Almost Boston Market Creamed Spinach": { Servings: "4", Calories: "382", ProteinGrams: "18", FatGrams: "27", CarbsGrams: "18", Meal: "Side", Cuisine: "Southern", Protein: "None", Notes: "One serving is very small", Link: "http://www.food.com/recipe/almost-boston-market-creamed-spinach-77206" },

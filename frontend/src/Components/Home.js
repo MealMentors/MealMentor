@@ -18,7 +18,7 @@ function Home() {
             localStorage.setItem("users", JSON.stringify({ ...userProfile, name: location.state.name}));
         }
     }, [location.state]);
-
+    document.body.style.height = "720px";
     return (
         
         <div className="homepage">
