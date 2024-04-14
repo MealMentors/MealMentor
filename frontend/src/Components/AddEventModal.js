@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect} from 'react';
-import useLocation from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Modal from 'react-modal';
 import Datetime from 'react-datetime';
 import axios from "axios";
@@ -32,6 +32,7 @@ export default function ({isOpen, onClose, onEventAdded}) {
       e.preventDefault();
 
       try {
+          onClose();
           const response = await axios.post("http://localhost:8000/schedule", {
               email, date, meal
           });
@@ -62,8 +63,8 @@ export default function ({isOpen, onClose, onEventAdded}) {
               <Datetime value={date} onChange={date => setDate(date)} placeholder="Date" />
               
               </div>           
-
-            <button type="submit" onClick={submit}>Add Meal</button>
+            <button type="submit" onClick={submit}>Add</button>
+            
           </form>
         </Modal>
       ) 

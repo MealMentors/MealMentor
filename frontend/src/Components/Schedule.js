@@ -4,7 +4,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import AddEventModal from "./AddEventModal"
 import "./Style/Schedule.css"
-//import axios from "axios"
+import axios from "axios"
 import moment from "moment"
 
 export default function Schedule() {
@@ -29,10 +29,9 @@ export default function Schedule() {
     async function handleDatesSet(data) {
       const response = await axios.get
       ("/api/calender/get-events?start="+ moment(data.start).toISOString()+
-      "&end="+
-      moment(data.end).toISOString())
-    }
-  */
+      "&end=")
+    }*/
+  
   return (
     <section>
 
@@ -45,15 +44,16 @@ export default function Schedule() {
             <button onClick={() => setModalOpen(true)} id="add-meal-btn">Add Meal</button>
           
         </div>
+
         <div className = "calendar">
-            <FullCalendar
-              ref={calendarRef}
-              events={events}
-              plugins={[dayGridPlugin]}
-              initialView="dayGridMonth"
+          <FullCalendar
+            ref={calendarRef}
+            events={events}
+            plugins={[dayGridPlugin]}
+            initialView="dayGridMonth"
             //eventAdd={(event) => handleEventAdd(event)}
             //datesSet = {(date) => handleDatesSet(date)}
-                      />
+          />
         </div>
       </div>
 
