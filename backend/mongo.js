@@ -36,57 +36,35 @@ const mealSchedule = new mongoose.Schema({
       type: String,
       required: true
   },
+  date: {
+    type: String,
+    required: true
+  },
   meal: {
     type: String,
     required: true
   },
-  date: {
-    type: String,
-    required: true
-  }
+  Servings: {    type: String,    required: false  },  
+  Calories: {    type: Number,    required: false  },
+  ProteinG: {    type: Number,    required: false  },
+  Fat: {    type: Number,    required: false  },
+  Carbs: {    type: Number,    required: false  },
+  Type: {    type: String,    required: false  },
+  Cuisine: {    type: String,    required: false  },
+  ProteinType: {    type: String,    required: false  }
 });
 
 const recipes = new mongoose.Schema({
-  RecipeName: {
-      type: String,
-      required: true
-  },
-  Website: {
-      type: String,
-      required: true
-  },
-  Servings: {
-    type: String,
-    required: false
-  },
-  Calories: {
-    type: Number,
-    required: false
-  },
-  ProteinG: {
-    type: Number,
-    required: false
-  },
-  Fat: {
-    type: Number,
-    required: false
-  },
-  Carbs: {
-    type: Number,
-    required: false
-  },
-  Type: {
-    type: String,
-    required: false
-  },
-  Cuisine: {
-    type: String,
-    required: false
-  },
-  ProteinType: {
-    type: String,
-    required: false
-  }
+  RecipeName: {      type: String,      required: true  },
+  Website: {      type: String,      required: true  },
+  Servings: {    type: String,    required: false  },  
+  Calories: {    type: Number,    required: false  },
+  ProteinG: {    type: Number,    required: false  },
+  Fat: {    type: Number,    required: false  },
+  Carbs: {    type: Number,    required: false  },
+  Type: {    type: String,    required: false  },
+  Cuisine: {    type: String,    required: false  },
+  ProteinType: {    type: String,    required: false  }
 });
 
 const usercollection = mongoose.model("users", userSchema);
