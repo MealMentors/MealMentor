@@ -60,7 +60,7 @@ function Login() {
             document.body.removeChild(notificationElement);
         }, 5000);
     }
-
+    document.body.style.height = "720px";
     return (
         <div className="d-flex justify-content-center align-items-center bg-primary.bg-gradient vh-100">
             <div className="bg-white p-3 rounded w-25">
