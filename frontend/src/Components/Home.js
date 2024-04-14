@@ -22,6 +22,7 @@ function Home() {
     return (
         
         <div className="homepage">
+            <Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>
             <div className="logout-button">
                 <Link to="/login">
                     <button id="logout-button">Logout</button>

@@ -1,13 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 import './Style/Welcome.css';
 
+function userState(userName) {
+    if (userName !== "" && userName !== null) {
+        var container = document.getElementById('container');
+        container.append("Hello");
+    } else {
+
+    }
+}
+
+
+
 const Welcome = () => {
+    const location = useLocation();
+    // Fetching user profile information from local storage or initializing it as an empty object
+    const userProfile = JSON.parse(localStorage.getItem("users")) || {};
+
+    // State to hold the user's name
+    const [userName, setUserName] = useState(userProfile.name || "Not Logged In");
+
+    useEffect(() => {
+        // Update the user's name when it changes in the location state
+        if (location.state && location.state.name) {
+            setUserName(location.state.name);
+            // Update the local storage with the new user profile information
+            localStorage.setItem("users", JSON.stringify({ ...userProfile, name: location.state.name }));
+        }
+    }, [location.state]);
+
     return (
         <div>
             <navbar className="column_align">
                 <ul className="login_signup">
-                    <label className="title">MealMentor</label>
+                    <Link to="/"><div className="title"><div class = "navlink">MealMentor</div></div></Link>
                     <li className="login_button" style={{marginLeft: 'auto', marginRight: '0px'}}>
                         <Link to="/login">Login</Link>
                     </li>
@@ -16,9 +44,25 @@ const Welcome = () => {
                     </li>
                 </ul>
             </navbar>
+            <br></br><br></br><br></br><br></br>
             <h1>Welcome to MealMentor!</h1>
-            {/* Add your content here */}
+            <div className = "heading2">
+                MealMentor is a web-powered application designed to help you eat healthy!<br></br><br></br>
+                MealMentor features:
+            </div>
+            <ul className="bulletpoint">
+                <li>Meal Scheduling</li>
+                <li>Personalized Meal Recommendations</li>
+                <li>A meal catalog with over 300 recipes</li>
+                <li>And more!</li>
+            </ul>
+            <div className="heading2"><br></br>
+                Start a new account for free today!
+            </div>
+
+            <div className="copyright">Copyright &copy; 2024 by MealMentor Team. All rights reserved.</div>
         </div>
+
     );
 };
 
