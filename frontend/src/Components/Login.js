@@ -19,37 +19,32 @@ function Login() {
     async function submit(e) {
         e.preventDefault();
         try {
-
-            await axios.post("http://localhost:8000/", {
+            const response = await axios.post("http://localhost:8000/", {
                 email, name, password
-            })
-                .then(response => {
-                    if (password === response.data.password) {
-                        // alert("Successfully Signed In");
-                        history("/home", { state: { email, name: response.data.name} })
-                    }
-                    else {
-                        alert("Username or Password is Incorrect")
-                    }
-                })
-                .catch(e => {
-                    alert("wrong details")
-                    console.log(e);
-                })
-
+            });
+    
+            if (password === response.data.password) {
+                // Store user information in local storage
+                const userData = { name: response.data.name, email: response.data.email };
+                localStorage.setItem("users", JSON.stringify(userData));
+                
+                // Redirect to home with user information
+                history("/home", { state: userData });
+            } else {
+                alert("Username or Password is Incorrect");
+            }
+        } catch (error) {
+            alert("Wrong details");
+            console.log(error);
         }
-        catch (e) {
-            console.log(e);
-
-        }
-
     }
+    
 
     return (
         <div className="d-flex justify-content-center align-items-center bg-primary.bg-gradient vh-100">
             <div className="bg-white p-3 rounded w-25">
                 <div className="login">
-
+                    <Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>
                     <h1 className="d-flex justify-content-center">Login</h1><br></br>
 
                     <form action="POST" class="login-form">

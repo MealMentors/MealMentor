@@ -47,6 +47,7 @@ function Home() {
     return (
         
         <div className="homepage">
+            <Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>
             <div className="logout-button">
                 <Link to="/login">
                     <button id="logout-button"onClick={logout}>Logout</button>
@@ -66,6 +67,11 @@ function Home() {
                 <Link to="/home/log">
                     <button id="home-button">Logging</button>
                 </Link>
+                <div className="account-button">
+                <Link to="/home/accountscreen">
+                    <button id="account-button">Account</button>
+                </Link>
+            </div>
             </div>
         </div>
     );
