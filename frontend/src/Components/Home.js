@@ -11,6 +11,7 @@ function Home() {
 
     // State to hold the user's name
     const [userName, setUserName] = useState(userProfile.name || "");
+
     useEffect(() => {
         // Update the user's name when it changes in the location state
         if (location.state && location.state.name) {
@@ -22,14 +23,15 @@ function Home() {
 
     async function logout(e) {
         e.preventDefault();
-
+    
         try {
-            const response = await axios.post("http://localhost:8000/logout", {
-                
-            });
-
-            
+            // Perform any necessary cleanup, such as clearing user data from local storage
+            localStorage.removeItem("users");
+    
+            // Redirect the user back to the home page
+            window.location.href = "/login"; // Redirect to the home page
         } catch (error) {
+            // If there's an error during logout, show an error notification
             showErrorNotification("Something went wrong. Please try again.");
             console.error(error);
         }
@@ -44,13 +46,13 @@ function Home() {
             document.body.removeChild(notificationElement);
         }, 5000);
     }
+
     return (
-        
         <div className="homepage">
             <Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>
             <div className="logout-button">
                 <Link to="/login">
-                    <button id="logout-button"onClick={logout}>Logout</button>
+                    <button id="logout-button" onClick={logout}>Logout</button>
                 </Link>
             </div>
             <h1>Hello {userName && ` ${userName}`}, and welcome to the homepage!</h1>
@@ -65,10 +67,10 @@ function Home() {
                     <button id="home-button">Recommend me a meal</button>
                 </Link>
                 <div className="account-button">
-                <Link to="/home/accountscreen">
-                    <button id="account-button">Account</button>
-                </Link>
-            </div>
+                    <Link to="/home/accountscreen">
+                        <button id="account-button">Account</button>
+                    </Link>
+                </div>
             </div>
         </div>
     );
