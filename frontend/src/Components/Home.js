@@ -42,6 +42,11 @@ function Home() {
                 <Link to="/home/log">
                     <button id="home-button">Logging</button>
                 </Link>
+                <div className="account-button">
+                <Link to="/home/accountscreen">
+                    <button id="account-button">Account</button>
+                </Link>
+            </div>
             </div>
         </div>
     );
