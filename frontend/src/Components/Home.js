@@ -36,6 +36,7 @@ function Home() {
                 <Link to="/home/log">
                     <button id="home-button">Logging</button>
                 </Link>
+                
             </div>
         </div>
     );
