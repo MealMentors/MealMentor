@@ -14,8 +14,8 @@ const DeleteAccountModal = ({ showModal, onClose, onDelete }) => {
             <h2>Confirm Deletion</h2>
             <p>Are you sure you want to delete your account?</p>
             <div>
-              <button onClick={onDelete}>Delete</button>
-              <button onClick={onClose}>Cancel</button>
+              <button id="deleteacct-button" onClick={onDelete}>Delete</button>
+              <button id="cancel-button" onClick={onClose}>Cancel</button>
             </div>
           </Modal>
         )}

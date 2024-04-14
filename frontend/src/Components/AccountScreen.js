@@ -45,7 +45,7 @@ const AccountScreen = () => {
           <span className="placeholder-text">{userEmail}</span>
         </div>
       </div>
-      <button id="deleteacct-button" onClick={handleOpenModal}>Delete Account</button>
+      <button id="opendeletemodal" onClick={handleOpenModal}>Delete Account</button>
       <DeleteAccountModal
   showModal={showModal}
   onClose={() => setShowModal(false)}
