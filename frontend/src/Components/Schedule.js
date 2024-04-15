@@ -16,7 +16,6 @@ export default function Schedule() {
     const calendarApi = calendarRef.current.getApi()
     calendarApi.addEvent({
       start: moment(event.start).toDate(),
-      end: moment(event.end).toDate(),
       title: event.title
     })
   }
