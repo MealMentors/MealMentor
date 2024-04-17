@@ -5,6 +5,9 @@ import axios from "axios"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style/AccountScreen.css";
 
+import account_profile from "./Assets/account_profile.png";
+
+
 const AccountScreen = () => {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
@@ -48,15 +51,16 @@ const AccountScreen = () => {
       </Link>
       <h1>My Account</h1>
       <div className="account-container">
-        <p className="info-label">Name</p> {/* Added class for styling */}
-        <div className="account-box">
-          <span className="placeholder-text">{name}</span>
-        </div>
-        <p className="info-label">Email</p> {/* Added class for styling */}
-        <div className="account-box">
-          <span className="placeholder-text">{email}</span>
-        </div>
-      </div>
+  <img src={account_profile} alt="Example Image" className="account-image" /> {/* Added class here */}
+  <p className="info-label">Name</p>
+  <div className="account-box">
+    <span className="placeholder-text">{name}</span>
+  </div>
+  <p className="info-label">Email</p>
+  <div className="account-box">
+    <span className="placeholder-text">{email}</span>
+  </div>
+</div>
       <button id="deletemodal-button" onClick={handleOpenModal}>Delete Account</button>
       <DeleteAccountModal
         showModal={showModal}

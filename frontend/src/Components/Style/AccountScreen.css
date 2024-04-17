@@ -1,3 +1,10 @@
+.account-image {
+  width: 200px; /* Set the width of the image */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Add border radius */
+  margin-bottom: 20px; /* Add margin bottom */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
 .info-label {
   font-weight: bold; /* Example style */
   color: #333; /* Example color */
