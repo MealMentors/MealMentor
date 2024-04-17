@@ -1,0 +1,11 @@
+.selection {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    gap: 20px;
+}
+
+.selectioncolumn {
+    display: flex;
+    flex-direction: column;
+}

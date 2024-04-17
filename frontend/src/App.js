@@ -8,10 +8,10 @@ import Schedule from "./Components/Schedule"
 import RecipeDictionary from "./Components/RecipeDictionary"
 import Welcome from "./Components/Welcome"
 import Recommender from "./Components/Recommender"
-import Log from "./Components/Log"
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
+import AccountScreen from './Components/AccountScreen'
 
 function App() {
   return (
@@ -25,8 +25,7 @@ function App() {
     <Route path="/home/schedule" element={<Schedule/>}/>
     <Route path='/home/catalog' element={<RecipeDictionary/>}/>
     <Route path='/home/recommend' element={<Recommender/>}/>
-    <Route path='/home/log' element={<Log/>}/>
-    
+    <Route path="/home/accountscreen" element={<AccountScreen/>} />
   </Routes>
 </Router>
     </div>

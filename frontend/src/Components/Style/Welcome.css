@@ -29,15 +29,19 @@
     margin-right: 10px;
     justify-content: space-around;
     font-weight: bold;
+
 }
 
 .login_signup {
     display: flex;
     flex-direction: row;
     padding-top: 10px;
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-left: 20px;
+    padding-bottom: 10px;
+    position: absolute;
+    background-color: #DDDDDD;
+    left: 0px;
+    right: 0px;
+    top: 0px;
 }
 
 .column_align {
@@ -52,10 +56,71 @@
     margin-left: auto;
 }
 
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul.bulletpoint {
+    list-style-type: circle;
+    font-size: 25px;
+    padding-left: 70px
+}
+
+.heading2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size:25px;
+}
+
+.underlinedheading2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 25px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
 .title {
-    margin-top: auto;
-    margin-bottom: auto;
+    position: absolute;
+    left: 20px;
+    top: 20px;
     font-size: 30px;
     font-weight: bold;
     margin-right: 20px;
+    font-style: italic;
+}
+
+div.navlink {
+    text-decoration: none;
+    color: #000000
+}
+
+div.navlink:link {
+    text-decoration: none;
+    color: #777777;
+}
+
+div.navlink:visited {
+    text-decoration: none;
+    color: #777777;
+}
+
+div.navlink:hover {
+    text-decoration: none;
+    color: #777777;
+}
+
+div.navlink:active {
+    text-decoration: none;
+    color: #777777;
+}
+
+.copyright {
+    position: absolute;
+    bottom: 40px;
 }

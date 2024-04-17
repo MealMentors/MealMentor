@@ -115,6 +115,18 @@ a {
     padding-top: 10px;
 }
 
+.linkdescription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+    width: 320px;
+    height: 60px;
+    background: #eaeaea;
+    border-radius: 40px;
+    font-size: 40px;
+}
+
 .input img{
     margin: 0px 30px;
 }
@@ -166,4 +178,3 @@ a {
     background: #eaeaea;
     color: #676767;
 }
-
