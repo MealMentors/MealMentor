@@ -49,7 +49,7 @@ const AccountScreen = () => {
       <Link to="/home">
         <button id="returnhome-button">Home</button>
       </Link>
-      <h1>My Account</h1>
+      <h1 className="header-label">My Account</h1>
       <div className="account-container">
   <img src={account_profile} alt="Example Image" className="account-image" /> {/* Added class here */}
   <p className="info-label">Name</p>
