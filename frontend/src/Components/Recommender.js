@@ -352,6 +352,20 @@ export default function Recommender() {
                     }
                 }
             }
+
+            const childArray = Array.from(recipe_container.children);   //Shuffle
+            childArray.sort(() => Math.random() - 0.5);
+            while (recipe_container.firstChild) {
+                recipe_container.removeChild(recipe_container.firstChild);
+            }
+            childArray.forEach(child => {
+                recipe_container.appendChild(child);
+            });
+
+            while (recipe_container.childElementCount > 5) {            //Top 5 Random Choices
+                recipe_container.removeChild(recipe_container.firstChild);
+            }
+
             var message_item = document.createElement("h1");
             if (recipe_container.firstChild) {
                 message_item.textContent = "Here are some recipes that you should try!";
