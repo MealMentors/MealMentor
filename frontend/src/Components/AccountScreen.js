@@ -15,7 +15,6 @@ const AccountScreen = () => {
   const handleOpenModal = () => {
     setShowModal(true);
     console.log("Modal opened");
-
   };
 
   useEffect(() => {
@@ -31,7 +30,6 @@ const AccountScreen = () => {
   }, [location.state, userProfile]);
 
   async function accountdel() {
-    //e.preventDefault();
     try {
         const response = await axios.post("http://localhost:8000/accountdel", {
             email, name
@@ -42,6 +40,7 @@ const AccountScreen = () => {
         console.error(error);
     }
   }
+
   return (
     <div>
       <Link to="/home">
@@ -49,11 +48,11 @@ const AccountScreen = () => {
       </Link>
       <h1>My Account</h1>
       <div className="account-container">
-        <p>Name</p>
+        <p className="info-label">Name</p> {/* Added class for styling */}
         <div className="account-box">
           <span className="placeholder-text">{name}</span>
         </div>
-        <p>Email</p>
+        <p className="info-label">Email</p> {/* Added class for styling */}
         <div className="account-box">
           <span className="placeholder-text">{email}</span>
         </div>
@@ -63,10 +62,8 @@ const AccountScreen = () => {
         showModal={showModal}
         onClose={() => setShowModal(false)}
         onDelete={() => {
-          // Logic to delete account can be handled here
           console.log("Deleting account...");
           accountdel();
-          // Close the modal after deletion
           setShowModal(false);
         }}
       />

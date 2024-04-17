@@ -1,3 +1,8 @@
+.info-label {
+  font-weight: bold; /* Example style */
+  color: #333; /* Example color */
+  margin-bottom: 5px; /* Example margin */
+}
 #returnhome-button {
     position: absolute;
     top: 10px; /* Adjust as needed */
