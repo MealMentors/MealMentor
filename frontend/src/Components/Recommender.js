@@ -7,15 +7,6 @@ import "./Style/Recommender.css";
 export default function Recommender() {
 
 
-    try {
-        document.getElementById('myForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent form submission
-            formSubmission();
-        });
-    } catch {
-        alert("No Form");
-    }
-
     function formSubmission() {
         //var ltgtcalories = document.querySelector('input[name="calorieselection"]:checked');
         try {
@@ -37,11 +28,29 @@ export default function Recommender() {
                 ltgtcarbs: ltgtcarbs,
                 carbs: carbs
             }
+            alert("Calories " + ltgtcalories + " " + calories + "\nProtein (g) " + ltgtprotein + " " + protein + "\nFat (g) " + ltgtfat + " " + fat + "\nCarbs (g) " + ltgtcarbs + " " + carbs);
         } catch {
             alert("Wrong Input");
         }
     }
+    /*function addListener() {
+        try {
+            document.getElementById('myForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent form submission
+                formSubmission();
+            });
+        } catch {
+            alert("No Form");
+        }
+    }*/
 
+    useEffect(() => {
+        document.getElementById('myForm').addEventListener('submit', formSubmission);
+
+        return () => {
+            //document.getElementById('myForm').removeEventListener('submit', formSubmission);
+        };
+    }, []);
 
     return (
         <form id = "myForm">
@@ -85,38 +94,4 @@ export default function Recommender() {
         </form>
     )
 
-    try {
-        document.getElementById('myForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent form submission
-            formSubmission();
-        });
-    } catch {
-        alert("No Form");
-    }
-
-    function formSubmission() {
-        //var ltgtcalories = document.querySelector('input[name="calorieselection"]:checked');
-        try {
-            var ltgtcalories = document.querySelector('input[name="calorieselection"]:checked').value;
-            var calories = document.getElementById("caltextinput").value;
-            var ltgtprotein = document.querySelector('input[name="proteinselection"]:checked').value;
-            var protein = document.getElementById("ptextinput").value;
-            var ltgtfat = document.querySelector('input[name="fatselection"]:checked').value;
-            var fat = document.getElementById("ftextinput").value;
-            var ltgtcarbs = document.querySelector('input[name="carbselection"]:checked').value;
-            var carbs = document.getElementById("ctextinput").value;
-            var data = {
-                ltgtcalories: ltgtcalories,
-                calories: calories,
-                ltgtprotein: ltgtprotein,
-                protein: protein,
-                ltgtfat: ltgtfat,
-                fat: fat,
-                ltgtcarbs: ltgtcarbs,
-                carbs: carbs
-            }
-        } catch {
-            alert("Wrong Input");
-        }
-    }
 }
