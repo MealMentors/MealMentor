@@ -74,10 +74,13 @@
 // module.exports = {usercollection,schedulecollection,recipecollection};
 
 // mongo.js
-const mongoose = require("mongoose");
-
 // Load environment variables from .env file for the MongoDB connection URI
 require('dotenv').config();
+
+const mongoose = require("mongoose");
+
+// from mikolaj code
+// const express = require("express");
 
 // Establish MongoDB connection using the URI from the .env file
 mongoose.connect(process.env.MONGODB_URI, {
@@ -113,47 +116,51 @@ const mealSchedule = new mongoose.Schema({
       type: String,
       required: true
   },
-  date: {
+  start: {
+    type: Date,
+    required: false
+  },
+  end: {
     type: Date,
     required: false
   },
   meal: {
     type: String,
     required: false
-  },
-  // Additional fields for meal scheduling
-  Servings: {
-    type: String,
-    required: false
-  },
-  Calories: {
-    type: Number,
-    required: false
-  },
-  ProteinG: {
-    type: Number,
-    required: false
-  },
-  Fat: {
-    type: Number,
-    required: false
-  },
-  Carbs: {
-    type: Number,
-    required: false
-  },
-  Type: {
-    type: String,
-    required: false
-  },
-  Cuisine: {
-    type: String,
-    required: false
-  },
-  ProteinType: {
-    type: String,
-    required: false
   }
+  // // Additional fields for meal scheduling
+  // Servings: {
+  //   type: String,
+  //   required: false
+  // },
+  // Calories: {
+  //   type: Number,
+  //   required: false
+  // },
+  // ProteinG: {
+  //   type: Number,
+  //   required: false
+  // },
+  // Fat: {
+  //   type: Number,
+  //   required: false
+  // },
+  // Carbs: {
+  //   type: Number,
+  //   required: false
+  // },
+  // Type: {
+  //   type: String,
+  //   required: false
+  // },
+  // Cuisine: {
+  //   type: String,
+  //   required: false
+  // },
+  // ProteinType: {
+  //   type: String,
+  //   required: false
+  // }
 });
 
 // Define a schema for recipes

@@ -1,10 +1,10 @@
-//event.js
+// event.js
 const mongoose = require("mongoose");
 
 const EventSchema = mongoose.Schema({
     email: { type: String, required: true },
-    date: { type: Date, required: true },
-    time: { type: String, required: true },
+    start: { type: Date, required: true },
+    end: { type: Date, required: true },
     meal: { type: String, required: true }
 });
 

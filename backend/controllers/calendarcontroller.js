@@ -24,13 +24,13 @@
 
 // calendarcontroller.js
 const router = require("express").Router();
-const Event = require("../models/event"); // Assuming the model file is named 'event.js' and is in the 'models' directory
-const moment = require("moment");
+const Event = require("../models/event");
 
 // Create a new calendar event
 router.post("/create-event", async (req, res) => {
     try {
         const newEvent = new Event({
+            email: req.body.email,
             start: req.body.start,
             end: req.body.end,
             meal: req.body.meal
@@ -38,6 +38,7 @@ router.post("/create-event", async (req, res) => {
 
         await newEvent.save();
         res.status(201).json({ message: "Event created successfully", event: newEvent });
+        res.sendStatus(201);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal Server Error", error: error });
@@ -77,11 +78,13 @@ router.get("/get-events", async (req, res) => {
 
         // Find events within the date range
         const events = await Event.find({
+            email: req.user.email,
             start: { $gte: startDate },
-            end: { $lte: endDate }
+            end: { $lte: endDate },
+            meal: { $exists: true }
         });
 
-        res.json(events);
+        res.send(events);
     } catch (error) {
         console.error("Failed to fetch events:", error);
         res.status(500).json({ error: "Internal Server Error" });

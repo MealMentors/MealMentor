@@ -167,7 +167,14 @@ const express = require("express");
 const bcrypt = require('bcrypt');
 const collection = require("./mongo");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const calendarController = require('./controllers/calendarcontroller');
 const app = express();
+
+// from mikolaj code: https://www.youtube.com/watch?v=Q8NV4koY7nU&t=913s
+
+// const app = express();
+app.use(bodyParser.json());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -176,6 +183,12 @@ app.use(cors());
 const users = collection.usercollection;
 const schedule = collection.schedulecollection;
 const recipes = collection.recipecollection;
+
+app.use('/api/calendar', calendarController);
+
+app.listen(8000, () => {
+    console.log("Server running on port 8000");
+});
 
 // Login endpoint
 app.post("/login", async (req, res) => {
@@ -256,16 +269,26 @@ app.post("/accountdel", async (req, res) => {
 
 // app.js - within the /home/schedule endpoint
 app.post("/home/schedule", async (req, res) => {
-    const { email, date, time, meal } = req.body;
+    const { email, start, end, meal } = req.body;
 
-    if (!email || !date || !time || !meal) {
+    if (!email || !start || !end || !meal) {
         return res.status(400).json({ message: "All fields are required" });
     }
 
     try {
-        const newEvent = new Event({ email, date, time, meal });
+        const newEvent = new Event({ email, start, end, meal });
         await newEvent.save();
         res.status(201).json(newEvent);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+app.get("/home/schedule", async (req, res) => {
+    try {
+        const events = await mealschedules.find();
+        res.status(200).json(events);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal Server Error" });
@@ -290,13 +313,6 @@ app.post("/home/recommend", async (req, res) => {
         console.error(error);
         res.status(500).json({ message: "Internal Server Error" });
     }
-});
-
-const calendarController = require('./controllers/calendarcontroller'); // Update the path to the actual location
-app.use('/api/calendar', calendarController);
-
-app.listen(8000, () => {
-    console.log("Server running on port 8000");
 });
 
 module.exports = app;
