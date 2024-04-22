@@ -378,7 +378,7 @@ import "./Style/Home.css";
 Modal.setAppElement('#root'); // Correct usage of Modal.setAppElement for accessibility.
 
 export default function AddEventModal({isOpen, onClose, onEventAdded}) {
-    const [meal, setMeal] = useState("");
+    const [meal, setMeal] = useState('""');
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date());
     const [error, setError] = useState('');
@@ -390,8 +390,10 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
     // FOR TESTING //
     const submit = async (event) => {
         event.preventDefault();
-        console.log(meal);
-        console.log({email, meal, start, end}); // Debug: log the event details
+        //Add event in backend
+        const response = await axios.post("http://localhost:8000/create-event", {
+            email, meal, start, end
+        });
         onEventAdded({email, start, end, meal}); // Update the calendar with the new event
 
     // rest of your submission logic...

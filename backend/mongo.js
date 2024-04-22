@@ -208,10 +208,19 @@ const recipesSchema = new mongoose.Schema({
   }
 });
 
+const EventSchema = new mongoose.Schema({
+  email: { type: String, required: true },
+  start: { type: Date, required: false },
+  end: { type: Date, required: false },
+  meal: { type: String, required: false }
+});
+
+
 // Create models from the above schemas
 const usercollection = mongoose.model("users", userSchema);
 const schedulecollection = mongoose.model("mealschedules", mealSchedule);
 const recipecollection = mongoose.model("recipes", recipesSchema);
+const eventcollection = mongoose.model("events", EventSchema);
 
 // Export the models for use in the app
-module.exports = {usercollection, schedulecollection, recipecollection};
+module.exports = {usercollection, schedulecollection, recipecollection, eventcollection};

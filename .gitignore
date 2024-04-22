@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 /.vs/MealMentor/FileContentIndex
 /frontend/node_modules
+/backend/node_modules
 /.vs
 *.pack
 /.idea

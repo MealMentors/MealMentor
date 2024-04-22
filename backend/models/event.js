@@ -8,6 +8,6 @@ const EventSchema = mongoose.Schema({
     meal: { type: String, required: true }
 });
 
-const Event = mongoose.model("Event", EventSchema);
+const Event = mongoose.model("events", EventSchema);
 
-module.exports = Event;
+module.exports = {Event};

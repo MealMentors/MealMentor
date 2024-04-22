@@ -183,8 +183,8 @@ app.use(cors());
 const users = collection.usercollection;
 const schedule = collection.schedulecollection;
 const recipes = collection.recipecollection;
+const ev = collection.eventcollection;
 
-app.use('/api/calendar', calendarController);
 
 app.listen(8000, () => {
     console.log("Server running on port 8000");
@@ -312,6 +312,55 @@ app.post("/home/recommend", async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+
+
+// Create a new calendar event
+app.post("/create-event", async (req, res) => {
+    const { email, start, end, meal } = req.body;
+        const newEvent = {
+            email: email,
+            start: start,
+            end: end,
+            meal: meal
+        };
+    try {
+        console.log("Adding new event");
+        await ev.create(newEvent);
+        console.log("Event Added");
+        res.status(201).json({ message: "Event created successfully"});
+        console.log("Status set");
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error", error: error });
+    }
+});
+
+app.get("/get-events", async (req, res) => {
+    try {
+        // Validate query parameters
+        if (!req.query.start || !req.query.end) {
+            return res.status(400).json({ error: "Start and end date parameters are required." });
+        }
+
+        // Parse dates using moment
+        const startDate = moment(req.query.start).startOf('day').toDate();
+        const endDate = moment(req.query.end).endOf('day').toDate();
+
+        // Find events within the date range
+        const events = await Event.find({
+            email: req.user.email,
+            start: { $gte: startDate },
+            end: { $lte: endDate },
+            meal: { $exists: true }
+        });
+
+        res.send(events);
+    } catch (error) {
+        console.error("Failed to fetch events:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
