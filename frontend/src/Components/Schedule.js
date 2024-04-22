@@ -81,7 +81,7 @@ export default function Schedule() {
     const [modalOpen, setModalOpen] = useState(false);
     const [events, setEvents] = useState([]);
     const calendarRef = useRef(null);
-
+    
     // Fetch events when the component mounts and whenever dates are set
     // useEffect(() => {
     //     fetchEvents();
@@ -135,6 +135,7 @@ export default function Schedule() {
         // }
 
         try {
+            console.log("what")
             // Attempt to send a POST request to create an event
             const response = await axios.post("/create-event", data.event);
             console.log('Event created successfully:', response.data);

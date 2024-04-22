@@ -391,9 +391,20 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
     const submit = async (event) => {
         event.preventDefault();
         //Add event in backend
+        
         const response = await axios.post("http://localhost:8000/create-event", {
             email, meal, start, end
         });
+        
+        //Code for adding all existing events
+        const a = await axios.get("http://localhost:8000/get-events", {
+            email
+        });
+        alert(a.data.length);
+        for (let i = 0; i < a.data.length;i++) {
+            onEventAdded({email:a.data[i].email,start:a.data[i].start,end:a.data[i].end,meal:a.data[i].meal});
+        }
+
         onEventAdded({email, start, end, meal}); // Update the calendar with the new event
 
     // rest of your submission logic...

@@ -168,9 +168,8 @@ const bcrypt = require('bcrypt');
 const collection = require("./mongo");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const calendarController = require('./controllers/calendarcontroller');
 const app = express();
-
+const router = express.Router();
 // from mikolaj code: https://www.youtube.com/watch?v=Q8NV4koY7nU&t=913s
 
 // const app = express();
@@ -295,7 +294,6 @@ app.get("/home/schedule", async (req, res) => {
     }
 });
 
-
 // Recommend endpoint
 app.post("/home/recommend", async (req, res) => {
     const { CaloriesOp, ProteinGOp, FatOp, CarbsOp, CaloriesVal, ProteinGVal, FatVal, CarbsVal } = req.body;
@@ -315,23 +313,19 @@ app.post("/home/recommend", async (req, res) => {
     }
 });
 
-
-
 // Create a new calendar event
 app.post("/create-event", async (req, res) => {
     const { email, start, end, meal } = req.body;
-        const newEvent = {
-            email: email,
-            start: start,
-            end: end,
-            meal: meal
-        };
+    const newEvent = {
+        email: email,
+        start: start,
+        end: end,
+        meal: meal
+    };
     try {
         console.log("Adding new event");
         await ev.create(newEvent);
-        console.log("Event Added");
         res.status(201).json({ message: "Event created successfully"});
-        console.log("Status set");
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal Server Error", error: error });
@@ -339,29 +333,24 @@ app.post("/create-event", async (req, res) => {
 });
 
 app.get("/get-events", async (req, res) => {
-    try {
-        // Validate query parameters
-        if (!req.query.start || !req.query.end) {
-            return res.status(400).json({ error: "Start and end date parameters are required." });
-        }
-
-        // Parse dates using moment
-        const startDate = moment(req.query.start).startOf('day').toDate();
-        const endDate = moment(req.query.end).endOf('day').toDate();
-
-        // Find events within the date range
-        const events = await Event.find({
-            email: req.user.email,
-            start: { $gte: startDate },
-            end: { $lte: endDate },
-            meal: { $exists: true }
-        });
-
-        res.send(events);
-    } catch (error) {
-        console.error("Failed to fetch events:", error);
-        res.status(500).json({ error: "Internal Server Error" });
+    console.log("Getting user's events");
+    let em = req.body.email
+    const check = await ev.findOne({ em });
+    console.log("Email found");
+    if (check) {
+        console.log("Check passed");
+        const arr = await ev.find({em});
+        const a = Array.from(arr);
+        console.log("Sending");
+        console.log(a.length);
+        let i = 0;
+        console.log(a[i].email);
+        console.log(a[i].meal);
+        console.log(a[i].start);
+        console.log(a[i].end);
+        return res.send(a);
     }
+    
 });
 
 module.exports = app;
