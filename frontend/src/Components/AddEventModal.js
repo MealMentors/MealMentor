@@ -395,8 +395,8 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
         const response = await axios.post("http://localhost:8000/create-event", {
             email, meal, start, end
         });
-        
-        //Code for adding all existing events
+
+        //Code for get all existing events
         const a = await axios.get("http://localhost:8000/get-events", {
             email
         });
@@ -404,7 +404,8 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
         for (let i = 0; i < a.data.length;i++) {
             onEventAdded({email:a.data[i].email,start:a.data[i].start,end:a.data[i].end,meal:a.data[i].meal});
         }
-
+        //End of get
+        
         onEventAdded({email, start, end, meal}); // Update the calendar with the new event
 
     // rest of your submission logic...
