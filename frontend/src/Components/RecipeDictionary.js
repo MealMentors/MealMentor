@@ -4,8 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 import RecipeSelection from "./Style/RecipeSelection.css";
 
 export default function FoodSelection() {
-    //<Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>
-    document.body.style.height = "850px";
     var dict = {
         "(Not) Refried Beans": { Servings: "9", Calories: "86", ProteinGrams: "10", FatGrams: "0", CarbsGrams: "27", Meal: "Protein", Cuisine: "Mexican", Protein: "Beans", Notes: "None", Link: "http://www.budgetbytes.com/2011/08/not-refried-beans/" },
         "Almost Boston Market Creamed Spinach": { Servings: "4", Calories: "382", ProteinGrams: "18", FatGrams: "27", CarbsGrams: "18", Meal: "Side", Cuisine: "Southern", Protein: "None", Notes: "One serving is very small", Link: "http://www.food.com/recipe/almost-boston-market-creamed-spinach-77206" },
@@ -298,16 +296,16 @@ export default function FoodSelection() {
         "Yassa Poulet": { Servings: "6", Calories: "459", ProteinGrams: "26", FatGrams: "30", CarbsGrams: "17", Meal: "Entree", Cuisine: "African", Protein: "Chicken wings", Notes: "None", Link: "https://www.saveur.com/article/Recipes/Yassa-Poulet-Grilled-Chicken-Caramelized-Onion" },
         "Zucchini Cheddar Scones": { Servings: "8", Calories: "343", ProteinGrams: "8", FatGrams: "18", CarbsGrams: "37", Meal: "Bread", Cuisine: "American", Protein: "Cheese", Notes: "None", Link: "https://bakerbynature.com/zucchini-cheddar-scones/" },
         "Zuppa Toscana": { Servings: "6", Calories: "338", ProteinGrams: "19", FatGrams: "14", CarbsGrams: "38", Meal: "Soup", Cuisine: "Italian", Protein: "Sausage, beans", Notes: "so. tasty.", Link: "http://www.budgetbytes.com/2015/01/zuppa-toscana/" }
-    }; //Currently Hardcoded in, connect to database once setup
-    const [value, setValue] = React.useState("(Not) Refried Beans");
+    }; //Dictionary with all of the recipes
+    const [value, setValue] = React.useState("(Not) Refried Beans"); //Starting Value
     const handleChange = (event) => {
         setValue(event.target.value);
     }
 
     //Get the user's name from the previous page
     const location = useLocation()
-    const userName = location.state && location.state.name ? location.state.name : '';
-    document.body.style.height = "700px";
+    const userName = location.state && location.state.name ? location.state.name : ''; 
+    document.body.style.height = "700px"; //Manually Update Document Height
     return (
         <div>
             <label className="header">

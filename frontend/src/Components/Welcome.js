@@ -3,17 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Style/Welcome.css';
 
-function userState(userName) {
-    if (userName !== "" && userName !== null) {
-        var container = document.getElementById('container');
-        container.append("Hello");
-    } else {
-
-    }
-}
-
-
-
 const Welcome = () => {
     const location = useLocation();
     // Fetching user profile information from local storage or initializing it as an empty object
@@ -31,7 +20,7 @@ const Welcome = () => {
         }
     }, [location.state]);
 
-    document.body.style.height = "720px";
+    document.body.style.height = "720px"; //Manually set document height
 
     return (
         <div>

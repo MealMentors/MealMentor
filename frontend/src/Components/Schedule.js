@@ -81,77 +81,68 @@ export default function Schedule() {
     const [modalOpen, setModalOpen] = useState(false);
     const [events, setEvents] = useState([]);
     const calendarRef = useRef(null);
-    
+
     // Fetch events when the component mounts and whenever dates are set
-    // useEffect(() => {
-    //     fetchEvents();
-    // }, []);
+    useEffect(() => {
+        fetchEvents();
+    }, []);
 
-    // const fetchEvents = async () => {
-    //     try {
-    //         // Make sure this URL is correct based on your backend setup
-    //         const response = await axios.get("http://localhost:8000/api/calendar/get-events", {
-    //             params: {
-    //                 start: moment().startOf('month').toISOString(),
-    //                 end: moment().endOf('month').toISOString(),
-    //             }
-    //         });
-    //    //         setEvents(response.data.map(event => ({...event, start: new Date(event.start)})));
-    //     } catch (error) {
-    //         console.error("Error fetching events:", error);
-    //         alert("Error fetching events.");
-    //     }
-    // };
+    const fetchEvents = async () => {
+        try {
+            // Make sure this URL is correct based on your backend setup
+            const response = await axios.get("http://localhost:8000/api/calendar/get-events", {
+                params: {
+                    start: moment().startOf('month').toISOString(),
+                    end: moment().endOf('month').toISOString(),
+                }
+            });
 
-    const onEventAdded = event => {
-        console.log(event);
-        let calendarApi = calendarRef.current.getApi();
-        const fullCalendarEvent = {
-            email: event.email, // Assuming you have an email property in the event object
-            title: event.meal, // Assuming you want the meal name to be the title.
-            start: event.start, // Already should be in the correct format (Date object or ISO string).
-            end: event.end, // Make sure this is also in the correct format.
-            // Include custom properties under `extendedProps`.
-            extendedProps: {
-                meal: event.meal
-            }
-        };
-
-        // Add the event to the calendar
-        calendarApi.addEvent(fullCalendarEvent);
-
-        setModalOpen(false); // Close the modal after adding the event
-        // fetchEvents(); // Re-fetch events to ensure the calendar is up to date
+            setEvents(response.data.map(event => ({...event, start: new Date(event.start)})));
+        } catch (error) {
+            console.error("Error fetching events:", error);
+            alert("Error fetching events.");
+        }
     };
 
+    const onEventAdded = event => {
+        const calendarApi = calendarRef.current.getApi();
+        calendarApi.addEvent({
+            start: moment(event.start).toDate(),
+            meal: event.meal
+        });
+        fetchEvents(); // Re-fetch events to ensure the calendar is up to date
+    };
 
     async function handleEventAdd(data) {
-        // Ensure that `end` and `meal` properties exist in the data.event object
-        // if (!data.event.meal) {
-        //     console.error("The event must have 'end' and 'meal' properties");
-        //     alert("The event must have 'end' and 'meal' properties");
-        //     return; // Exit the function if the validation fails
-        // }
-
-        try {
-            console.log("what")
-            // Attempt to send a POST request to create an event
-            const response = await axios.post("/create-event", data.event);
-            console.log('Event created successfully:', response.data);
-            // Additional code to handle the response, update UI, etc.
-        } catch (error) {
-            console.error('Failed to create event:', error);
-            // Error handling, such as displaying an error message to the user
-        }
+    try {
+        const newEventData = {
+            email: data.event.email,
+            date: data.event.date, // Ensure the date format matches the backend expectation
+            time: data.event.time,
+            meal: data.event.meal
+        };
+        await axios.post("http://localhost:8000/home/schedule", newEventData);
+        fetchEvents(); // Re-fetch events to include the new event
+    } catch (error) {
+        console.error("Failed to add event:", error);
+        alert("Failed to add event.");
     }
+}
 
+
+    // async function handleEventAdd(data) {
+    //     try {
+    //         await axios.post("http://localhost:8000/api/calendar/create-event", data.event);
+    //         fetchEvents(); // Re-fetch events to include the new event
+    //     } catch (error) {
+    //         console.error("Failed to add event:", error);
+    //         alert("Failed to add event.");
+    //     }
+    // }
 
     // This function may not be necessary if you're fetching all events on mount
     // async function handleDatesSet(data) {
-    //     const response = await axios.get(
-    //         "/api/calendar/get-events?start=" + moment(data.start).toISOString()
-    //         + "&end=" + moment(data.end).toISOString());
-    //     setEvents(response.data);
+    //     fetchEvents();
     // }
 
     return (
@@ -174,8 +165,7 @@ export default function Schedule() {
                     />
                 </div>
             </div>
-            <AddEventModal isOpen={modalOpen}
-                           onClose={() => setModalOpen(false)}
+            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)}
                            onEventAdded={event => onEventAdded(event)}/>
         </section>
     );

@@ -4,9 +4,8 @@
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\Components",
-    "\\frontend\\src\\Components\\Style",
-    "\\src",
-    "\\src\\Components"
+    "\\frontend\\src\\Components\\Style"
   ],
+  "SelectedNode": "\\frontend\\src\\Components\\DeleteAccountModal.js",
   "PreviewInSolutionExplorer": false
 }

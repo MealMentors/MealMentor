@@ -300,7 +300,6 @@ export default function Recommender() {
     };
 
     function formSubmission() {
-        //var ltgtcalories = document.querySelector('input[name="calorieselection"]:checked');
         try {
             var ltgtcalories = document.querySelector('input[name="calorieselection"]:checked').value;
             var calories = document.getElementById("caltextinput").value;
@@ -310,7 +309,7 @@ export default function Recommender() {
             var fat = document.getElementById("ftextinput").value;
             var ltgtcarbs = document.querySelector('input[name="carbselection"]:checked').value;
             var carbs = document.getElementById("ctextinput").value;
-            var data = {
+            var data = {    //Storing into data variable for simplicity
                 ltgtcalories: ltgtcalories,
                 calories: calories,
                 ltgtprotein: ltgtprotein,
@@ -320,12 +319,11 @@ export default function Recommender() {
                 ltgtcarbs: ltgtcarbs,
                 carbs: carbs
             }
-            //alert("Calories " + ltgtcalories + " " + calories + "\nProtein (g) " + ltgtprotein + " " + protein + "\nFat (g) " + ltgtfat + " " + fat + "\nCarbs (g) " + ltgtcarbs + " " + carbs);
 
             var recipe_container = document.getElementById("recipe_container");
             var message = document.getElementById("message");
 
-            while (recipe_container.firstChild) {
+            while (recipe_container.firstChild) {   //Making sure data is cleared before adding new data
                 recipe_container.removeChild(recipe_container.firstChild);
             }
 
@@ -366,7 +364,7 @@ export default function Recommender() {
             }
 
             var message_item = document.createElement("h1");
-            if (recipe_container.firstChild) {
+            if (recipe_container.firstChild) {  //Display text based on recipes were or were not applicable
                 message_item.textContent = "Here are some recipes that you should try!";
             } else {
                 message_item.textContent = "No items were found. Try refining your search criteria.";
@@ -377,22 +375,12 @@ export default function Recommender() {
             alert("Wrong Input");
         }
     }
-    /*function addListener() {
-        try {
-            document.getElementById('myForm').addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent form submission
-                formSubmission();
-            });
-        } catch {
-            alert("No Form");
-        }
-    }*/
 
     useEffect(() => {
-        const element = document.getElementById('myForm');
+        const element = document.getElementById('myForm');      //Add handler for submit button
 
         const submitHandler = function (event) {
-            event.preventDefault();
+            event.preventDefault(); //Prevent reloading the page on submit
             formSubmission();
         };
 
@@ -402,7 +390,7 @@ export default function Recommender() {
             element.removeEventListener('submit', submitHandler);
         };
     }, []);
-    document.body.style.height = "720px";
+    document.body.style.height = "720px"; //Manually set document height
     return (
         <form id = "myForm">
             <div className="selectioncolumn">
