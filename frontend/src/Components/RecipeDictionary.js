@@ -307,7 +307,7 @@ export default function FoodSelection() {
     //Get the user's name from the previous page
     const location = useLocation()
     const userName = location.state && location.state.name ? location.state.name : '';
-
+    document.body.style.height = "700px";
     return (
         <div>
             <label className="header">
@@ -626,11 +626,11 @@ export default function FoodSelection() {
                 <p className="linkdescription"><a href={dict[value].Link}>Recipe Link</a></p>
 
             </label>
-            <div className="button-div">
-                {/* <a href="../home"><button id="back-to-home-btn">Back to Home</button></a> */}
-                <Link to={{ pathname: '../home', state: useState }} ><button id="back-to-home-btn">Back to Home</button></Link>
+            <div className="topleft">
+                <div className="button-div">
+                        <Link to={{ pathname: '../home', state: useState }} ><button id="back-to-home-btn">Back to Home</button></Link>
+                </div>
             </div>
-
         </div>
     )
 }

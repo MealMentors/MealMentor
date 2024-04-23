@@ -149,6 +149,7 @@ function Signup() {
         <div className="d-flex justify-content-center align-items-center bg-primary.bg-gradient vh-100">
             <div className="bg-white p-3 rounded w-25">
                 <div className="signup">
+                    <Link to="/"><div className="title"><div className="navlink">MealMentor</div></div></Link>
                     <h1 className="d-flex justify-content-center">Signup</h1><br></br>
                     {errorMessage && <p className="text-danger">{errorMessage}</p>}
                     <form action="POST" className="signup-form">

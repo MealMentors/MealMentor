@@ -46,7 +46,7 @@ function Home() {
             document.body.removeChild(notificationElement);
         }, 5000);
     }
-
+    document.body.style.height = "720px";
     return (
         <div className="homepage">
             <Link to="/"><div className="title"><div class="navlink">MealMentor</div></div></Link>

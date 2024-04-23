@@ -1,12 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\Components",
+    "\\frontend\\src\\Components\\Style",
     "\\src",
-    "\\src\\Components",
-    "\\src\\Components\\Assets",
-    "\\src\\Components\\LoginSignup",
-    "\\src\\Components\\RecipeSelection"
+    "\\src\\Components"
   ],
-  "SelectedNode": "\\src\\Components\\RecipeSelection\\RecipeDictionary.js",
   "PreviewInSolutionExplorer": false
 }

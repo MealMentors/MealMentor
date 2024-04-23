@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./Style/Recommender.css";
 
 export default function Recommender() {
@@ -341,7 +340,7 @@ export default function Recommender() {
                             if (((ltgtcarbs === "lessthan") && (dict[item].CarbsGrams <= parseInt(carbs)) && (dict[item].CarbsGrams !== "")) || ((ltgtcarbs === "greaterthan") && (dict[item].CarbsGrams >= parseInt(carbs)) && (dict[item].CarbGrams !== ""))) {
                                 var list_item = document.createElement("li");
                                 var link_item = document.createElement("a");
-                                link_item.className = "macro";
+                                link_item.className = "macro2";
                                 link_item.textContent = item + "\u00A0\u00A0\u00A0Calories: " + dict[item].Calories + "\u00A0\u00A0\u00A0Protein: " + dict[item].ProteinGrams + "\u00A0\u00A0\u00A0Fat: " + dict[item].FatGrams + "\u00A0\u00A0\u00A0Carbs: " + dict[item].CarbsGrams;
                                 link_item.href = dict[item].Link;
                                 link_item.target = "_blank";
@@ -403,7 +402,7 @@ export default function Recommender() {
             element.removeEventListener('submit', submitHandler);
         };
     }, []);
-
+    document.body.style.height = "720px";
     return (
         <form id = "myForm">
             <div className="selectioncolumn">
@@ -445,6 +444,11 @@ export default function Recommender() {
 
                 <div id = "message"></div>
                 <ul id = "recipe_container"></ul>
+            </div>
+            <div className="topleft">
+                <div className="button-div">
+                    <Link to={{ pathname: '../home', state: useState }} ><button id="back-to-home-btn">Back to Home</button></Link>
+                </div>
             </div>
         </form>
     )

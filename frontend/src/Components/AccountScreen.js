@@ -41,7 +41,7 @@ const AccountScreen = () => {
     } catch (error) {
         console.error(error);
     }
-  }
+    }
   return (
     <div>
       <Link to="/home">

@@ -96,7 +96,6 @@ export default function Schedule() {
                     end: moment().endOf('month').toISOString(),
                 }
             });
-
             setEvents(response.data.map(event => ({...event, start: new Date(event.start)})));
         } catch (error) {
             console.error("Error fetching events:", error);
