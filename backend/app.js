@@ -332,22 +332,27 @@ app.post("/create-event", async (req, res) => {
     }
 });
 
-app.get("/get-events", async (req, res) => {
+app.post("/get-events", async (req, res) => {
+    const { email } = req.body;
+    const newEvent = {
+        email: email
+    };
     console.log("Getting user's events");
-    let em = req.body.email
-    const check = await ev.findOne({ em });
+    console.log(email);
+    const check = await ev.findOne({ email });
     console.log("Email found");
+    console.log(check);
     if (check) {
         console.log("Check passed");
-        const arr = await ev.find({em});
+        const arr = await ev.find({email});
         const a = Array.from(arr);
         console.log("Sending");
-        // console.log(a.length);
-        // let i = 0;
-        // console.log(a[i].email);
-        // console.log(a[i].meal);
-        // console.log(a[i].start);
-        // console.log(a[i].end);
+        console.log(a.length);
+        let i = 0;
+        console.log(a[i].email);
+        console.log(a[i].meal);
+        console.log(a[i].start);
+        console.log(a[i].end);
         return res.send(a);
     }
     
