@@ -378,40 +378,64 @@ import "./Style/Home.css";
 Modal.setAppElement('#root'); // Correct usage of Modal.setAppElement for accessibility.
 
 export default function AddEventModal({isOpen, onClose, onEventAdded}) {
-    const [meal, setMeal] = useState("");
-    const [date, setDate] = useState(new Date());
-    const [time, setTime] = useState(new Date());
+    const [meal, setMeal] = useState('""');
+    const [start, setStart] = useState(new Date());
+    const [end, setEnd] = useState(new Date());
     const [error, setError] = useState('');
 
     // Fetching user profile information from local storage or initializing it as an empty object
     const userProfile = JSON.parse(localStorage.getItem("users")) || {};
     const email = userProfile.email || "";
 
+    // FOR TESTING //
     const submit = async (event) => {
         event.preventDefault();
+        //Add event in backend
+        
+        const response = await axios.post("http://localhost:8000/create-event", {
+            email, meal, start, end
+        });
 
-        const formattedDate = moment(date).format('YYYY-MM-DD'); // Format date to match backend requirements
-        const formattedTime = moment(time).format('HH:mm'); // Format time to match backend requirements
-
-        try {
-            const response = await axios.post("http://localhost:8000/home/schedule", {
-                email,
-                date: formattedDate,
-                time: formattedTime,
-                meal
-            });
-
-            if (response.status === 201) {
-                onEventAdded(response.data); // Update the calendar with the new event
-                onClose(); // Close the modal after successful addition
-            } else {
-                setError("Failed to add meal. Please try again.");
-            }
-        } catch (error) {
-            console.error("Failed to add event:", error);
-            setError("Something went wrong. Please try again.");
+        //Code for get all existing events
+        const a = await axios.post("http://localhost:8000/get-events", {
+            email
+        });
+        //alert(a.data.length);
+        for (let i = 0; i < a.data.length;i++) {
+            onEventAdded({email:a.data[i].email,start:a.data[i].start,end:a.data[i].end,meal:a.data[i].meal});
         }
+        //End of get
+        
+        //onEventAdded({email, start, end, meal}); // Update the calendar with the new event
+
+    // rest of your submission logic...
     };
+
+
+    // const submit = async (event) => {
+    //     event.preventDefault();
+    //
+    //     onEventAdded({email, meal, start, end}); // Update the calendar with the new event
+    //
+    //     try {
+    //         const response = await axios.post("/create-event", {
+    //             email,
+    //             meal,
+    //             start,
+    //             end
+    //         });
+    //
+    //         if (response.status === 201) {
+    //             onEventAdded(response.data); // Update the calendar with the new event
+    //             onClose(); // Close the modal after successful addition
+    //         } else {
+    //             setError("Failed to add meal. Please try again.");
+    //         }
+    //     } catch (error) {
+    //         console.error("Failed to add event:", error);
+    //         setError("Something went wrong. Please try again.");
+    //     }
+    // };
 
 
     // Clear error message when modal is closed
@@ -423,8 +447,8 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
     return (
         <Modal isOpen={isOpen} onRequestClose={handleModalClose}>
             <form onSubmit={submit}>
-                <select className="form-control" value={meal} onChange={e => setMeal(e.target.value)}
-                        placeholder="Select Meal">
+                <select className="form-control" value={meal} onChange={e => setMeal(e.target.value)}>
+                    <option value="">Select a meal...</option>
                     <option value="(Not) Refried Beans">(Not) Refried Beans</option>
                     <option value="Almost Boston Market Creamed Spinach">Almost Boston Market Creamed Spinach</option>
                     <option value="Apple Oat Greek Yogurt Muffins">Apple Oat Greek Yogurt Muffins</option>
@@ -434,12 +458,9 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
                     <option value="Bacon Parmesan Spaghetti Squash">Bacon Parmesan Spaghetti Squash</option>
                     <option value="Bacon-wrapped Green Bean Bundles">Bacon-wrapped Green Bean Bundles</option>
                     <option value="Bacon, Mushroom, and Spinach Quiche">Bacon, Mushroom, and Spinach Quiche</option>
-                    <option value="Bacon, Onion, and Brown Lentil Skillet">Bacon, Onion, and Brown Lentil Skillet
-                    </option>
+                    <option value="Bacon, Onion, and Brown Lentil Skillet">Bacon, Onion, and Brown Lentil Skillet</option>
                     <option value="Baked Broccoli Macaroni and Cheese">Baked Broccoli Macaroni and Cheese</option>
-                    <option value="Baked Chicken Milanese with Arugula and Tomatoes">Baked Chicken Milanese with Arugula
-                        and Tomatoes
-                    </option>
+                    <option value="Baked Chicken Milanese with Arugula and Tomatoes">Baked Chicken Milanese with Arugula and Tomatoes</option>
                     <option value="Baked Chicken Nuggets">Baked Chicken Nuggets</option>
                     <option value="Baked Eggplant Parmesan Stacks">Baked Eggplant Parmesan Stacks</option>
                     <option value="Baked Falafel Salad">Baked Falafel Salad</option>
@@ -815,19 +836,18 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
                     <option value="Zuppa Toscana">Zuppa Toscana</option>
                 </select>
                 <div>
-                    <label>Date</label>
+                    <label>Start Date</label>
                     <Datetime
-                  value={date}
-                  onChange={setDate}
-                  dateFormat="YYYY-MM-DD"
-                  timeFormat={false}
-                />
-                <Datetime
-                  value={time}
-                  onChange={setTime}
-                  dateFormat={false}
-                  timeFormat="HH:mm"
-                />
+                        value={start}
+                        onChange={date => setStart(date)}
+                    />
+                </div>
+                <div>
+                    <label>End Date</label>
+                    <Datetime
+                        value={end}
+                        onChange={date => setEnd(date)}
+                    />
                 </div>
                 {error && <div className="alert alert-danger">{error}</div>}
                 <button type="submit" className="btn btn-primary">Add Meal</button>

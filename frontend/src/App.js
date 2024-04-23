@@ -1,17 +1,19 @@
 //import './App.css'
-import React from 'react'
-import Modal from 'react-modal'
-import Home from "./Components/Home"
-import Login from "./Components/Login"
-import Signup from "./Components/Signup"
-import Schedule from "./Components/Schedule"
-import RecipeDictionary from "./Components/RecipeDictionary"
-import Welcome from "./Components/Welcome"
-import Recommender from "./Components/Recommender"
+import React from 'react';
+import Modal from 'react-modal';
+import Home from "./Components/Home";
+import Login from "./Components/Login";
+import Signup from "./Components/Signup";
+import Schedule from "./Components/Schedule";
+import RecipeDictionary from "./Components/RecipeDictionary";
+import Welcome from "./Components/Welcome";
+import Recommender from "./Components/Recommender";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
-import AccountScreen from './Components/AccountScreen'
+import AccountScreen from './Components/AccountScreen';
+
+Modal.setAppElement('#root');
 
 function App() {
   return (
