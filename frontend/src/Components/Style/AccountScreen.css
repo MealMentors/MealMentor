@@ -18,6 +18,35 @@
   color: #333; /* Example color */
   margin-bottom: 5px; /* Example margin */
 }
+.account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Add this line to center vertically */
+  height: 100vh; /* Set the container height to the full viewport height */
+  margin-top: -120px;
+  margin-bottom: 0px;
+}
+
+.account-section {
+  margin-bottom: 10px; /* Adjust margin-bottom to control the gap between sections */
+}
+
+.account-box {
+  width: 300px;
+  height: 50px;
+  margin-bottom: 5px; /* Adjust margin-bottom to move the boxes higher */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder-text {
+  color: #999;
+}
+
 #returnhome-button {
     position: absolute;
     top: 10px; /* Adjust as needed */
@@ -49,35 +78,6 @@
       align-items: center;
     }
     
-   .account-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Add this line to center vertically */
-  height: 100vh; /* Set the container height to the full viewport height */
-  margin-top: -120px;
-  margin-bottom: 0px;
-}
-
-.account-section {
-  margin-bottom: 10px; /* Adjust margin-bottom to control the gap between sections */
-}
-
-.account-box {
-  width: 300px;
-  height: 50px;
-  margin-bottom: 5px; /* Adjust margin-bottom to move the boxes higher */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.placeholder-text {
-  color: #999;
-}
-
 #deletemodal-button {
   position: absolute;
   top: 700px; /* Adjust as needed */
@@ -169,10 +169,3 @@
   transform: scale(1.05) rotate(-1deg);}
 
 
-        
-        .account-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        
