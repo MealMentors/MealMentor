@@ -58,35 +58,14 @@ export default function Schedule() {
 
         // Add the event to the calendar
         calendarApi.addEvent(fullCalendarEvent);
-
-        setModalOpen(false); // Close the modal after adding the event
-        if (x = 0) {
-            fetchEvents(); // Re-fetch events to ensure the calendar is up to date
-            x = 1;
-        }
+        // if (x = 0) {
+        //     fetchEvents(); // Re-fetch events to ensure the calendar is up to date
+        //     x = 1;
+        // }
+        //setModalOpen(false); // Close the modal after adding the event
+        
         
     };
-
-
-    async function handleEventAdd(data) {
-        // Ensure that `end` and `meal` properties exist in the data.event object
-        // if (!data.event.meal) {
-        //     console.error("The event must have 'end' and 'meal' properties");
-        //     alert("The event must have 'end' and 'meal' properties");
-        //     return; // Exit the function if the validation fails
-        // }
-
-        try {
-            console.log("what")
-            // Attempt to send a POST request to create an event
-            const response = await axios.post("/create-event", data.event);
-            console.log('Event created successfully:', response.data);
-            // Additional code to handle the response, update UI, etc.
-        } catch (error) {
-            console.error('Failed to create event:', error);
-            // Error handling, such as displaying an error message to the user
-        }
-    }
 
 
     // This function may not be necessary if you're fetching all events on mount
@@ -112,7 +91,6 @@ export default function Schedule() {
                         events={events}
                         plugins={[dayGridPlugin]}
                         initialView="dayGridMonth"
-                        eventAdd={event => handleEventAdd(event)}
                         // datesSet={date => handleDatesSet(date)} // Removed if not needed
                     />
                 </div>
