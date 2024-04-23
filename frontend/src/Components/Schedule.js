@@ -127,7 +127,6 @@ export default function Schedule() {
         
     };
 
-
     async function handleEventAdd(data) {
         // Ensure that `end` and `meal` properties exist in the data.event object
         // if (!data.event.meal) {
