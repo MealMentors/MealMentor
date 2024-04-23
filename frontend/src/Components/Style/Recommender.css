@@ -8,4 +8,38 @@
 .selectioncolumn {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    margin-top: 0px;
+    display: flex;
+    gap: 10px;
+}
+
+.macros {
+    margin-top: 0px;
+    display: flex;
+    gap: 25px;
+}
+
+.macro {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 1000px;
+    height: 30px;
+    background: #eaeaea;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+
+ul {
+    list-style-type: none;
 }
