@@ -35,6 +35,8 @@
   align-items: center;
   justify-content: center; /* Add this line to center vertically */
   height: 100vh; /* Set the container height to the full viewport height */
+  margin-top: -120px;
+  margin-bottom: 0px;
 }
 
 .account-section {
