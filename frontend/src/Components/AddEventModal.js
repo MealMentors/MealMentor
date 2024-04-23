@@ -395,6 +395,7 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
         const response = await axios.post("http://localhost:8000/create-event", {
             email, meal, start, end
         });
+        
         handleModalClose();
         //onEventAdded({email, start, end, meal}); // Update the calendar with the new event
 
