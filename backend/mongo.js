@@ -83,10 +83,7 @@ const mongoose = require("mongoose");
 // const express = require("express");
 
 // Establish MongoDB connection using the URI from the .env file
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => {
   console.log("MongoDB connected");
 })
