@@ -42,6 +42,7 @@ const AccountScreen = () => {
         console.error(error);
     }
     }
+    document.body.style.height = "700px";
   return (
     <div>
       <Link to="/home">
