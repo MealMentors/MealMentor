@@ -396,7 +396,7 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
             email, meal, start, end
         });
         
-        onEventAdded({email, start, end, meal}); // Update the calendar with the new event
+        //onEventAdded({email, start, end, meal}); // Update the calendar with the new event
 
     // rest of your submission logic...
     };
