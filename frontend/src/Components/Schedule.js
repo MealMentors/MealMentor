@@ -81,27 +81,26 @@ export default function Schedule() {
     const [modalOpen, setModalOpen] = useState(false);
     const [events, setEvents] = useState([]);
     const calendarRef = useRef(null);
-    
+    let x = 0;
     // Fetch events when the component mounts and whenever dates are set
-    // useEffect(() => {
-    //     fetchEvents();
-    // }, []);
-
-    // const fetchEvents = async () => {
-    //     try {
-    //         // Make sure this URL is correct based on your backend setup
-    //         const response = await axios.get("http://localhost:8000/api/calendar/get-events", {
-    //             params: {
-    //                 start: moment().startOf('month').toISOString(),
-    //                 end: moment().endOf('month').toISOString(),
-    //             }
-    //         });
-    //    //         setEvents(response.data.map(event => ({...event, start: new Date(event.start)})));
-    //     } catch (error) {
-    //         console.error("Error fetching events:", error);
-    //         alert("Error fetching events.");
-    //     }
-    // };
+    useEffect(() => {
+        fetchEvents();
+    }, []);
+    // Fetching user profile information from local storage or initializing it as an empty object
+    const userProfile = JSON.parse(localStorage.getItem("users")) || {};
+    const email = userProfile.email || "";
+    
+    const fetchEvents = async () => {
+        //Code for get all existing events
+        const a = await axios.post("http://localhost:8000/get-events", {
+            email
+        });
+        //alert(a.data.length);
+        for (let i = 0; i < a.data.length;i++) {
+            onEventAdded({email:a.data[i].email,start:a.data[i].start,end:a.data[i].end,meal:a.data[i].meal});
+        }
+        //End of get
+    };
 
     const onEventAdded = event => {
         console.log(event);
@@ -121,7 +120,11 @@ export default function Schedule() {
         calendarApi.addEvent(fullCalendarEvent);
 
         setModalOpen(false); // Close the modal after adding the event
-        // fetchEvents(); // Re-fetch events to ensure the calendar is up to date
+        if (x = 0) {
+            fetchEvents(); // Re-fetch events to ensure the calendar is up to date
+            x = 1;
+        }
+        
     };
 
 
