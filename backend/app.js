@@ -342,12 +342,12 @@ app.get("/get-events", async (req, res) => {
         const arr = await ev.find({em});
         const a = Array.from(arr);
         console.log("Sending");
-        console.log(a.length);
-        let i = 0;
-        console.log(a[i].email);
-        console.log(a[i].meal);
-        console.log(a[i].start);
-        console.log(a[i].end);
+        // console.log(a.length);
+        // let i = 0;
+        // console.log(a[i].email);
+        // console.log(a[i].meal);
+        // console.log(a[i].start);
+        // console.log(a[i].end);
         return res.send(a);
     }
     

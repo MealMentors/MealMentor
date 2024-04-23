@@ -400,7 +400,7 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
         const a = await axios.get("http://localhost:8000/get-events", {
             email
         });
-        alert(a.data.length);
+        //alert(a.data.length);
         for (let i = 0; i < a.data.length;i++) {
             onEventAdded({email:a.data[i].email,start:a.data[i].start,end:a.data[i].end,meal:a.data[i].meal});
         }
