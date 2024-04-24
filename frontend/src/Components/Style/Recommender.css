@@ -1,29 +1,15 @@
 .selection {
-    margin-top: 30px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     font-size: 20px;
-    gap: 5px;
-}
-
-.radio-container {
-    display: flex;
-    gap: 10px;
-}
-
-.selection > div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center; /* Center horizontally */
+    gap: 20px;
 }
 
 .selectioncolumn {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center horizontally */
+    align-items: center;
 }
-
 
 .row {
     margin-top: 0px;
@@ -42,8 +28,8 @@
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
-    width: 1000px; /* Adjust width as needed */
-    padding: 10px;
+    width: 1000px;
+    height: 30px;
     background: #eaeaea;
     border-radius: 20px;
     font-size: 20px;
@@ -63,64 +49,4 @@ ul {
     position: absolute;
     left: 20px;
     top: -10px;
-}
-
-#submit-btn{
-    position: absolute;
-    top: 570px; /* Adjust as needed */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Move back half of its own width */
-    background-color: #c2fbd7;
-    border-radius: 100px;
-    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
-    color: green;
-    cursor: pointer;
-    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 250ms;
-    border: 0;
-    font-size: 16px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-#submit-btn:hover {
-    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
-    transform: translateX(-50%) scale(1.05); /* Adjust scale factor */
-  }
-  
-
-  #returnhome-btn {
-    position: fixed;
-    top: 20px; /* Adjust as needed */
-    left: 20px; /* Adjust as needed */
-    background-color: #c2fbd7;
-    border-radius: 100px;
-    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
-    color: green;
-    cursor: pointer;
-    display: inline-block;
-    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 250ms;
-    border: 0;
-    font-size: 16px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    z-index: 999; /* Ensure it's above other elements */
-}
-
-#returnhome-btn:hover {
-    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
-    transform: scale(1.05) rotate(-1deg);
-}
-
-#message {
-    margin-top: 30px; /* Adjust the value to add space between the button and the message */
 }

@@ -396,11 +396,37 @@ export default function AddEventModal({isOpen, onClose, onEventAdded}) {
             email, meal, start, end
         });
         
-        //handleModalClose();
-        onEventAdded({email, start, end, meal}); // Update the calendar with the new event
+        handleModalClose();
+        //onEventAdded({email, start, end, meal}); // Update the calendar with the new event
 
     // rest of your submission logic...
     };
+
+
+    // const submit = async (event) => {
+    //     event.preventDefault();
+    //
+    //     onEventAdded({email, meal, start, end}); // Update the calendar with the new event
+    //
+    //     try {
+    //         const response = await axios.post("/create-event", {
+    //             email,
+    //             meal,
+    //             start,
+    //             end
+    //         });
+    //
+    //         if (response.status === 201) {
+    //             onEventAdded(response.data); // Update the calendar with the new event
+    //             onClose(); // Close the modal after successful addition
+    //         } else {
+    //             setError("Failed to add meal. Please try again.");
+    //         }
+    //     } catch (error) {
+    //         console.error("Failed to add event:", error);
+    //         setError("Something went wrong. Please try again.");
+    //     }
+    // };
 
 
     // Clear error message when modal is closed

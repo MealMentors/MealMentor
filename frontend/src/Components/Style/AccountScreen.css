@@ -1,91 +1,73 @@
-.header-label {
-/* font-weight: bold;  Example style */
-color: #333; /* Example color */
-position: relative; /* Set position to relative */
-top: 10px; /* Adjust vertical position */
-left: 14px; /* Adjust horizontal position */
-}
-
-.info-label {
-/* font-weight: bold; Example style */
-color: #333; /* Example color */
-margin-bottom: 5px; /* Example margin */
-}
-
-.account-image {
-width: 200px; /* Set the width of the image */
-height: auto; /* Maintain aspect ratio */
-border-radius: 10px; /* Add border radius */
-margin-bottom: 20px; /* Add margin bottom */
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
-}
-
-.account-container {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center; /* Add this line to center vertically */
-height: 100vh; /* Set the container height to the full viewport height */
-margin-top: -120px;
-margin-bottom: 0px;
+#returnhome-button {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  #returnhome-button:hover {
+    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);}
+    .account-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+   .account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Add this line to center vertically */
+  height: 100vh; /* Set the container height to the full viewport height */
+  margin-top: -120px;
+  margin-bottom: 0px;
 }
 
 .account-section {
-margin-bottom: 10px; /* Adjust margin-bottom to control the gap between sections */
+  margin-bottom: 10px; /* Adjust margin-bottom to control the gap between sections */
 }
 
 .account-box {
-width: 300px;
-height: 50px;
-margin-bottom: 5px; /* Adjust margin-bottom to move the boxes higher */
-border: 1px solid #ccc;
-border-radius: 5px;
-display: flex;
-justify-content: center;
-align-items: center;
+  width: 300px;
+  height: 50px;
+  margin-bottom: 5px; /* Adjust margin-bottom to move the boxes higher */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .placeholder-text {
-color: #999;
+  color: #999;
 }
-
-#returnhome-button {
-  position: absolute;
-  top: 10px; /* Adjust as needed */
-  left: 20px; /* Adjust as needed */
-  background-color: #c2fbd7;
-  border-radius: 100px;
-  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
-  color: green;
-  cursor: pointer;
-  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-  padding: 7px 20px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 250ms;
-  border: 0;
-  font-size: 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-#returnhome-button:hover {
-  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
-transform: scale(1.05) rotate(-1deg);
-}
-
 
 #deletemodal-button {
   position: absolute;
-  top: 600px; /* Adjust as needed */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Move back half of its own width */
+  top: 10px; /* Adjust as needed */
+  left: 10px; /* Adjust as needed */
   background-color: #ff7f7f; /* Red background color */
   border-radius: 100px;
   box-shadow: rgba(255, 127, 127, .2) 0 -25px 18px -14px inset, rgba(255, 127, 127, .15) 0 1px 2px, rgba(255, 127, 127, .15) 0 2px 4px, rgba(255, 127, 127, .15) 0 4px 8px, rgba(255, 127, 127, .15) 0 8px 16px, rgba(255, 127, 127, .15) 0 16px 32px;
   color: white; /* Text color */
   cursor: pointer;
+  display: inline-block;
   font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
   padding: 7px 20px;
   text-align: center;
@@ -100,60 +82,64 @@ transform: scale(1.05) rotate(-1deg);
 
 #deletemodal-button:hover {
   box-shadow: rgba(255, 127, 127, .35) 0 -25px 18px -14px inset, rgba(255, 127, 127, .25) 0 1px 2px, rgba(255, 127, 127, .25) 0 2px 4px, rgba(255, 127, 127, .25) 0 4px 8px, rgba(255, 127, 127, .25) 0 8px 16px, rgba(255, 127, 127, .25) 0 16px 32px;
-  transform: translateX(-50%) scale(1.05); /* Adjust scale factor */
+  transform: scale(1.05) rotate(-1deg);
 }
-
-
-#cancel-button {
-position: absolute;
-top: 100px; /* Adjust as needed */
-left: 100px; /* Adjust as needed */
-background-color: #c2fbd7;
-border-radius: 100px;
-box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
-color: green;
-cursor: pointer;
-display: inline-block;
-font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-padding: 7px 20px;
-text-align: center;
-text-decoration: none;
-transition: all 250ms;
-border: 0;
-font-size: 16px;
-user-select: none;
--webkit-user-select: none;
-touch-action: manipulation;
-}
-
-#cancel-button:hover {
-box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
-transform: scale(1.05) rotate(-1deg);}
-
+  
 #deleteacct-button {
-position: absolute;
-top: 100px; /* Adjust as needed */
-left: 10px; /* Adjust as needed */
-background-color: #ff7f7f; /* Red background color */
-border-radius: 100px;
-box-shadow: rgba(255, 127, 127, .2) 0 -25px 18px -14px inset, rgba(255, 127, 127, .15) 0 1px 2px, rgba(255, 127, 127, .15) 0 2px 4px, rgba(255, 127, 127, .15) 0 4px 8px, rgba(255, 127, 127, .15) 0 8px 16px, rgba(255, 127, 127, .15) 0 16px 32px;
-color: white; /* Text color */
-cursor: pointer;
-display: inline-block;
-font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-padding: 7px 20px;
-text-align: center;
-text-decoration: none;
-transition: all 250ms;
-border: 0;
-font-size: 16px;
-user-select: none;
--webkit-user-select: none;
-touch-action: manipulation;
+  position: absolute;
+  top: 100px; /* Adjust as needed */
+  left: 10px; /* Adjust as needed */
+  background-color: #ff7f7f; /* Red background color */
+  border-radius: 100px;
+  box-shadow: rgba(255, 127, 127, .2) 0 -25px 18px -14px inset, rgba(255, 127, 127, .15) 0 1px 2px, rgba(255, 127, 127, .15) 0 2px 4px, rgba(255, 127, 127, .15) 0 4px 8px, rgba(255, 127, 127, .15) 0 8px 16px, rgba(255, 127, 127, .15) 0 16px 32px;
+  color: white; /* Text color */
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 #deleteacct-button:hover {
-box-shadow: rgba(255, 127, 127, .35) 0 -25px 18px -14px inset, rgba(255, 127, 127, .25) 0 1px 2px, rgba(255, 127, 127, .25) 0 2px 4px, rgba(255, 127, 127, .25) 0 4px 8px, rgba(255, 127, 127, .25) 0 8px 16px, rgba(255, 127, 127, .25) 0 16px 32px;
-transform: scale(1.05) rotate(-1deg);}
-
-
+  box-shadow: rgba(255, 127, 127, .35) 0 -25px 18px -14px inset, rgba(255, 127, 127, .25) 0 1px 2px, rgba(255, 127, 127, .25) 0 2px 4px, rgba(255, 127, 127, .25) 0 4px 8px, rgba(255, 127, 127, .25) 0 8px 16px, rgba(255, 127, 127, .25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+    
+    #cancel-button {
+      position: absolute;
+      top: 100px; /* Adjust as needed */
+      left: 100px; /* Adjust as needed */
+      background-color: #c2fbd7;
+      border-radius: 100px;
+      box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+      color: green;
+      cursor: pointer;
+      display: inline-block;
+      font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+      padding: 7px 20px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 250ms;
+      border: 0;
+      font-size: 16px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+    
+    #cancel-button:hover {
+      box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+      transform: scale(1.05) rotate(-1deg);}
+      .account-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      

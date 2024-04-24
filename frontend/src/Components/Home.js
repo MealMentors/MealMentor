@@ -55,8 +55,7 @@ function Home() {
                     <button id="logout-button" onClick={logout}>Logout</button>
                 </Link>
             </div>
-            <h1 style={{ margin: '10px' }}>Hello {userName && ` ${userName}`}, and welcome to the homepage!</h1>
-
+            <h1>Hello {userName && ` ${userName}`}, and welcome to the homepage!</h1>
             <div className="button-func-div">
                 <Link to="/home/catalog">
                     <button id="home-button">Catalog</button>
