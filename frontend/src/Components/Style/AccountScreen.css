@@ -1,5 +1,5 @@
 .header-label {
-font-weight: bold; /* Example style */
+/* font-weight: bold;  Example style */
 color: #333; /* Example color */
 position: relative; /* Set position to relative */
 top: 10px; /* Adjust vertical position */
@@ -7,7 +7,7 @@ left: 14px; /* Adjust horizontal position */
 }
 
 .info-label {
-font-weight: bold; /* Example style */
+/* font-weight: bold; Example style */
 color: #333; /* Example color */
 margin-bottom: 5px; /* Example margin */
 }
