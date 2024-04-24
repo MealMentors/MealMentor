@@ -439,7 +439,7 @@ export default function Recommender() {
                     <input type="text" id="ctextinput" name="carbsinput" />
                 </div>
                 <div className="selection">
-                    <button type="submit">Submit</button>
+                    <button type="submit" button id="submit-btn">Submit</button>
                 </div>
 
                 <div id = "message"></div>
@@ -447,7 +447,7 @@ export default function Recommender() {
             </div>
             <div className="topleft">
                 <div className="button-div">
-                    <Link to={{ pathname: '../home', state: useState }} ><button id="back-to-home-btn">Back to Home</button></Link>
+                    <Link to={{ pathname: '../home', state: useState }} ><button id="returnhome-btn">Home</button></Link>
                 </div>
             </div>
         </form>
