@@ -135,7 +135,9 @@ function Signup() {
             });
 
             if (response.status === 201) { // User created successfully
-                history("/home", {state: {email, name}});
+                const userData = { name: response.data.user.name, email: response.data.user.email };
+                localStorage.setItem("users", JSON.stringify(userData));
+                history("/home", { state: userData });
             } else {
                 setErrorMessage(response.data.message || "An error occurred");
             }
