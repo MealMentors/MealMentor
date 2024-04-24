@@ -409,7 +409,7 @@ export default function Recommender() {
         <form id="myForm">
     <div class="selectioncolumn">
         <div class="selection" >
-            <div style={{ fontWeight: 'bold' }}>Calories:</div>
+            <div >Calories:</div>
             <div class="radio-container">
                 <label for="callessthan">Are At Most</label>
                 <input type="radio" id="callessthan" name="calorieselection" value="lessthan" checked />
@@ -419,7 +419,7 @@ export default function Recommender() {
             <input type="text" id="caltextinput" name="calorieinput" />
         </div>
         <div class="selection">
-            <div style={{ fontWeight: 'bold' }}>Protein (g):</div>
+            <div >Protein (g):</div>
             <div class="radio-container">
                 <label for="plessthan">Are At Most</label>
                 <input type="radio" id="plessthan" name="proteinselection" value="lessthan" checked />
@@ -429,7 +429,7 @@ export default function Recommender() {
             <input type="text" id="ptextinput" name="proteininput" />
         </div>
         <div class="selection">
-            <div style={{ fontWeight: 'bold' }}>Fat (g):</div>
+            <div >Fat (g):</div>
             <div class="radio-container">
                 <label for="flessthan">Are At Most</label>
                 <input type="radio" id="flessthan" name="fatselection" value="lessthan" checked />
@@ -439,7 +439,7 @@ export default function Recommender() {
             <input type="text" id="ftextinput" name="fatinput" />
         </div>
         <div class="selection">
-            <div style={{ fontWeight: 'bold' }}>Carbs (g):</div>
+            <div >Carbs (g):</div>
             <div class="radio-container">
                 <label for="clessthan">Are At Most</label>
                 <input type="radio" id="clessthan" name="carbselection" value="lessthan" checked />
