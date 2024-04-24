@@ -1,74 +1,4 @@
-// //schedule.js
-// import React, { useRef, useState } from 'react'
-// import FullCalendar from '@fullcalendar/react'
-// import dayGridPlugin from '@fullcalendar/daygrid'
-// import AddEventModal from "./AddEventModal"
-// import "./Style/Schedule.css"
-// import axios from "axios"
-// import moment from "moment"
-//
-// export default function Schedule() {
-//   const [modalOpen, setModalOpen] = useState(false)
-//   const [events, setEvents] = useState([])
-//   const calendarRef = useRef(null)
-//
-//   const onEventAdded = (event) => {
-//     const calendarApi = calendarRef.current.getApi()
-//     calendarApi.addEvent({
-//       start: moment(event.start).toDate(),
-//       title: event.title
-//     })
-//   }
-//
-//   async function handleEventAdd(data) {
-//     console.log(data.event);
-//     await axios.post("/api/calendar/create-event", data.event);
-//   }
-//
-//   async function handleDatesSet(data) {
-//     const response = await axios.get(`/api/calendar/get-events?start=${moment(data.start).toISOString()}
-//                                                   &end=${moment(data.end).toISOString()}`);
-//     setEvents(response.data); // Assuming response data is the array of events
-//   }
-//
-//
-//   return (
-//     <section>
-//
-//       <div style={{ position: "relative", zIndex: 0 }}>
-//         <div className="schedule-header">
-//
-//             <a href="../home"><button id="home-button-btn">Back to Home</button></a>
-//
-//
-//             <button onClick={() => setModalOpen(true)} id="add-meal-btn">Add Meal</button>
-//
-//         </div>
-//
-//         <div className = "calendar">
-//           <FullCalendar
-//             ref={calendarRef}
-//             events={events}
-//             plugins={[dayGridPlugin]}
-//             initialView="dayGridMonth"
-//
-//
-//             eventAdd={(event) => handleEventAdd(event)}
-//             datesSet = {(date) => handleDatesSet(date)}
-//           />
-//         </div>
-//       </div>
-//
-//       <AddEventModal
-//         isOpen={modalOpen}
-//         onClose={() => setModalOpen(false)} // Close the modal when requested
-//         onEventAdded={event => onEventAdded(event)}
-//       />
-//
-//     </section>
-//   );
-// }
-
+//Schedule.js
 import React, {useEffect, useRef, useState} from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -81,68 +11,66 @@ export default function Schedule() {
     const [modalOpen, setModalOpen] = useState(false);
     const [events, setEvents] = useState([]);
     const calendarRef = useRef(null);
-
+    let x = 0;
     // Fetch events when the component mounts and whenever dates are set
     useEffect(() => {
         fetchEvents();
     }, []);
-
+    // Fetching user profile information from local storage or initializing it as an empty object
+    const userProfile = JSON.parse(localStorage.getItem("users")) || {};
+    const email = userProfile.email || "";
+    
     const fetchEvents = async () => {
-        try {
-            // Make sure this URL is correct based on your backend setup
-            const response = await axios.get("http://localhost:8000/api/calendar/get-events", {
-                params: {
-                    start: moment().startOf('month').toISOString(),
-                    end: moment().endOf('month').toISOString(),
-                }
-            });
+        //Code for get all existing events
+        const a = await axios.post("http://localhost:8000/get-events", {
+            email
+        });
+        
+        // added so that events don't show up twice
+        const fetchedEvents = a.data.map(event => ({
+            ...event,
+            start: moment(event.start).toDate(),
+            end: moment(event.end).toDate(),
+            title: event.meal
+        }));
+        setEvents(fetchedEvents);
 
-            setEvents(response.data.map(event => ({...event, start: new Date(event.start)})));
-        } catch (error) {
-            console.error("Error fetching events:", error);
-            alert("Error fetching events.");
-        }
+        //alert(a.data.length);
+        // for (let i = 0; i < a.data.length;i++) {
+        //     onEventAdded({email:a.data[i].email,start:a.data[i].start,end:a.data[i].end,meal:a.data[i].meal});
+        // }
+        //End of get
     };
 
     const onEventAdded = event => {
-        const calendarApi = calendarRef.current.getApi();
-        calendarApi.addEvent({
-            start: moment(event.start).toDate(),
-            meal: event.meal
-        });
+        console.log(event);
+        let calendarApi = calendarRef.current.getApi();
+        const fullCalendarEvent = {
+            email: event.email, // Assuming you have an email property in the event object
+            title: event.meal, // Assuming you want the meal name to be the title.
+            start: event.start, // Already should be in the correct format (Date object or ISO string).
+            end: event.end, // Make sure this is also in the correct format.
+            // Include custom properties under `extendedProps`.
+            extendedProps: {
+                meal: event.meal
+            }
+        };
+
+        // Add the event to the calendar
+        calendarApi.addEvent(fullCalendarEvent);
         fetchEvents(); // Re-fetch events to ensure the calendar is up to date
+        setModalOpen(false); // Close the modal after adding the event
+        
+        
     };
 
-    async function handleEventAdd(data) {
-    try {
-        const newEventData = {
-            email: data.event.email,
-            date: data.event.date, // Ensure the date format matches the backend expectation
-            time: data.event.time,
-            meal: data.event.meal
-        };
-        await axios.post("http://localhost:8000/home/schedule", newEventData);
-        fetchEvents(); // Re-fetch events to include the new event
-    } catch (error) {
-        console.error("Failed to add event:", error);
-        alert("Failed to add event.");
-    }
-}
-
-
-    // async function handleEventAdd(data) {
-    //     try {
-    //         await axios.post("http://localhost:8000/api/calendar/create-event", data.event);
-    //         fetchEvents(); // Re-fetch events to include the new event
-    //     } catch (error) {
-    //         console.error("Failed to add event:", error);
-    //         alert("Failed to add event.");
-    //     }
-    // }
 
     // This function may not be necessary if you're fetching all events on mount
     // async function handleDatesSet(data) {
-    //     fetchEvents();
+    //     const response = await axios.get(
+    //         "/api/calendar/get-events?start=" + moment(data.start).toISOString()
+    //         + "&end=" + moment(data.end).toISOString());
+    //     setEvents(response.data);
     // }
 
     return (
@@ -160,12 +88,12 @@ export default function Schedule() {
                         events={events}
                         plugins={[dayGridPlugin]}
                         initialView="dayGridMonth"
-                        eventAdd={event => handleEventAdd(event)}
                         // datesSet={date => handleDatesSet(date)} // Removed if not needed
                     />
                 </div>
             </div>
-            <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)}
+            <AddEventModal isOpen={modalOpen}
+                           onClose={() => setModalOpen(false)}
                            onEventAdded={event => onEventAdded(event)}/>
         </section>
     );
