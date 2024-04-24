@@ -392,53 +392,66 @@ export default function Recommender() {
     }, []);
     document.body.style.height = "720px"; //Manually set document height
     return (
-        <form id = "myForm">
-            <div className="selectioncolumn">
-                <div className="selection">
-                    <div>Calories</div>
-                    <input type="radio" id="callessthan" name="calorieselection" value="lessthan" checked />
-                    <label for="callessthan">Are At Most</label>
-                    <input type="radio" id="calgreaterthan" name="calorieselection" value="greaterthan" />
-                    <label for="calgreaterthan">Are At Least</label>
-                    <input type="text" id="caltextinput" name="calorieinput" />
-                </div>
-                <div className="selection">
-                    <div>Protein (g)</div>
-                    <input type="radio" id="plessthan" name="proteinselection" value="lessthan" checked />
-                    <label for="plessthan">Are At Most</label>
-                    <input type="radio" id="pgreaterthan" name="proteinselection" value="greaterthan" />
-                    <label for="pgreaterthan">Are At Least</label>
-                    <input type="text" id="ptextinput" name="proteininput" />
-                </div>
-                <div className="selection">
-                    <div>Fat (g)</div>
-                    <input type="radio" id="flessthan" name="fatselection" value="lessthan" checked />
-                    <label for="flessthan">Are At Most</label>
-                    <input type="radio" id="fgreaterthan" name="fatselection" value="greaterthan" />
-                    <label for="fgreaterthan">Are At Least</label>
-                    <input type="text" id="ftextinput" name="fatinput" />
-                </div>
-                <div className="selection">
-                    <div>Carbs (g)</div>
-                    <input type="radio" id="clessthan" name="carbselection" value="lessthan" checked />
-                    <label for="clessthan">Are At Most</label>
-                    <input type="radio" id="cgreaterthan" name="carbselection" value="greaterthan" />
-                    <label for="cgreaterthan">Are At Least</label>
-                    <input type="text" id="ctextinput" name="carbsinput" />
-                </div>
-                <div className="selection">
-                    <button type="submit">Submit</button>
-                </div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
 
-                <div id = "message"></div>
-                <ul id = "recipe_container"></ul>
+        <form id="myForm">
+    <div class="selectioncolumn">
+        <div class="selection" >
+            <div >Calories:</div>
+            <div class="radio-container">
+                <label for="callessthan">Are At Most</label>
+                <input type="radio" id="callessthan" name="calorieselection" value="lessthan" checked />
+                <label for="calgreaterthan">Are At Least</label>
+                <input type="radio" id="calgreaterthan" name="calorieselection" value="greaterthan" />
             </div>
-            <div className="topleft">
-                <div className="button-div">
-                    <Link to={{ pathname: '../home', state: useState }} ><button id="back-to-home-btn">Back to Home</button></Link>
-                </div>
+            <input type="text" id="caltextinput" name="calorieinput" />
+        </div>
+        <div class="selection">
+            <div >Protein (g):</div>
+            <div class="radio-container">
+                <label for="plessthan">Are At Most</label>
+                <input type="radio" id="plessthan" name="proteinselection" value="lessthan" checked />
+                <label for="pgreaterthan">Are At Least</label>
+                <input type="radio" id="pgreaterthan" name="proteinselection" value="greaterthan" />
             </div>
-        </form>
+            <input type="text" id="ptextinput" name="proteininput" />
+        </div>
+        <div class="selection">
+            <div >Fat (g):</div>
+            <div class="radio-container">
+                <label for="flessthan">Are At Most</label>
+                <input type="radio" id="flessthan" name="fatselection" value="lessthan" checked />
+                <label for="fgreaterthan">Are At Least</label>
+                <input type="radio" id="fgreaterthan" name="fatselection" value="greaterthan" />
+            </div>
+            <input type="text" id="ftextinput" name="fatinput" />
+        </div>
+        <div class="selection">
+            <div >Carbs (g):</div>
+            <div class="radio-container">
+                <label for="clessthan">Are At Most</label>
+                <input type="radio" id="clessthan" name="carbselection" value="lessthan" checked />
+                <label for="cgreaterthan">Are At Least</label>
+                <input type="radio" id="cgreaterthan" name="carbselection" value="greaterthan" />
+            </div>
+            <input type="text" id="ctextinput" name="carbsinput" />
+        </div>
+        <div class="selection">
+            <button type="submit" button id="submit-btn">Submit</button>
+        </div>
+
+        <div id="message"></div>
+        <ul id="recipe_container"></ul>
+    </div>
+    <div class="topleft">
+        <div class="button-div">
+            <Link to={{ pathname: '../home', state: useState }}><button id="returnhome-btn">Back To Home</button></Link>
+        </div>
+    </div>
+</form>
+</div>
+
+    
     )
 
 }
