@@ -1,15 +1,29 @@
 .selection {
+    margin-top: 10px;
     display: flex;
+    flex-direction: column;
     font-size: 20px;
     gap: 20px;
 }
 
+.radio-container {
+    display: flex;
+    gap: 10px;
+}
+
+.selection > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center; /* Center horizontally */
+}
 
 .selectioncolumn {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Center horizontally */
 }
+
 
 .row {
     margin-top: 0px;
@@ -53,7 +67,7 @@ ul {
 
 #submit-btn{
     position: absolute;
-    top: 400px; /* Adjust as needed */
+    top: 595px; /* Adjust as needed */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Move back half of its own width */
     background-color: #c2fbd7;
@@ -105,4 +119,8 @@ ul {
 #returnhome-btn:hover {
     box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
+}
+
+#message {
+    margin-top: 30px; /* Adjust the value to add space between the button and the message */
 }
