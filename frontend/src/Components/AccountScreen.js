@@ -47,7 +47,7 @@ const AccountScreen = () => {
   return (
     <div>
       <Link to="/home">
-        <button id="returnhome-button">Home</button>
+        <button id="returnhome-button">Back To Home</button>
       </Link>
       <h1 className="header-label">My Account</h1>
       <div className="account-container">

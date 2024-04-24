@@ -457,7 +457,7 @@ export default function Recommender() {
     </div>
     <div class="topleft">
         <div class="button-div">
-            <Link to={{ pathname: '../home', state: useState }}><button id="returnhome-btn">Home</button></Link>
+            <Link to={{ pathname: '../home', state: useState }}><button id="returnhome-btn">Back To Home</button></Link>
         </div>
     </div>
 </form>
