@@ -58,11 +58,8 @@ export default function Schedule() {
 
         // Add the event to the calendar
         calendarApi.addEvent(fullCalendarEvent);
-        // if (x = 0) {
-        //     fetchEvents(); // Re-fetch events to ensure the calendar is up to date
-        //     x = 1;
-        // }
-        //setModalOpen(false); // Close the modal after adding the event
+        fetchEvents(); // Re-fetch events to ensure the calendar is up to date
+        setModalOpen(false); // Close the modal after adding the event
         
         
     };
