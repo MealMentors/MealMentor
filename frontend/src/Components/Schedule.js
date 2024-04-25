@@ -34,12 +34,6 @@ export default function Schedule() {
             title: event.meal
         }));
         setEvents(fetchedEvents);
-
-        //alert(a.data.length);
-        // for (let i = 0; i < a.data.length;i++) {
-        //     onEventAdded({email:a.data[i].email,start:a.data[i].start,end:a.data[i].end,meal:a.data[i].meal});
-        // }
-        //End of get
     };
 
     const onEventAdded = event => {
@@ -64,14 +58,6 @@ export default function Schedule() {
         
     };
 
-
-    // This function may not be necessary if you're fetching all events on mount
-    // async function handleDatesSet(data) {
-    //     const response = await axios.get(
-    //         "/api/calendar/get-events?start=" + moment(data.start).toISOString()
-    //         + "&end=" + moment(data.end).toISOString());
-    //     setEvents(response.data);
-    // }
 
     return (
         <section>

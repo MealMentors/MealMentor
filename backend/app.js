@@ -1,168 +1,4 @@
 // // backend app.js
-//
-// const express = require("express");
-// const collection = require("./mongo");
-// const users = collection.usercollection;
-// const schedule = collection.schedulecollection;
-// const recipes = collection.recipecollection;
-// const cors = require("cors");
-// const app = express();
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use(cors());
-//
-// app.get("/", cors(), (req, res) => {
-//     // route handlers
-// });
-//
-// app.post("/login", async (req, res) => {
-//     const{email,name,password}=req.body
-//
-//     try{
-//         const check = await users.findOne({email:email})
-//
-//         if(check){
-//             const userData = {  //Creates a userData object with which to compare and use email, name, and password
-//                 email: email,
-//                 name: check.name,
-//                 password: check.password
-//             }
-//             res.json(userData) //Returns object, access with response.data.email format
-//             res.status(201).json({ message: "Resource created successfully" });
-//
-//         }
-//         else{
-//             res.json("notexist")
-//         }
-//
-//     }
-//     catch(e){
-//         res.status(500).json({ error: "Internal Server Error" });
-//     }
-// });
-//
-// app.post("/signup", async (req, res) => {
-//     const { email, name, password } = req.body;
-//     const userData = {
-//         email: email,
-//         name: name,
-//         password: password
-//     };
-//
-//     try {
-//         const check = await users.findOne({ email: email });
-//
-//         if (check) {
-//             res.json("exist");
-//         } else {
-//             res.json("notexist");
-//             await users.create(userData);
-//             res.status(201).json({ message: "Resource created successfully" });
-//
-//         }
-//     } catch (error) {
-//         res.status(500).json({ error: "Internal Server Error" });
-//     }
-// });
-//
-// app.post("/accountdel", async (req, res) => {
-//     const { email, name, password } = req.body;
-//     const userData = {
-//         email: email,
-//         name: name,
-//         password: password
-//     };
-//
-//     try {
-//
-//         res.json("exist");
-//         await collection.usercollection.findOneAndDelete({email:email});
-//
-//     } catch (error) {
-//         res.status(500).json({error: "Internal Server Error"});
-//     }
-// });
-//
-//
-// app.post("/home/schedule", async (req, res) => {
-//     const { email, date, time, meal } = req.body;
-//     const userData = {  //Creates a userData object with which to compare and use email, name, and password
-//         email: email,
-//         date: date,
-//         time: time,
-//         meal: meal
-//     }
-//     try {
-//         //const check = await collection.schedulecollection.findOne({ userId: userId });
-//
-//         schedule.create(userData);
-//         res.status(201).json({ message: "Resource created successfully" });
-//
-//
-//     } catch (error) {
-//         res.status(500).json({ error: "Internal Server Error" });
-//
-//     }
-// });
-//
-// app.post("/home/recommend", async (req, res) => {
-//     const { RecipeName,Website,Servings,Type,Cuisine,Calories,ProteinG,Fat,Carbs,CaloriesOp,ProteinGOp,FatOp,CarbsOp,CaloriesVal,ProteinGVal,FatVal,CarbsVal, } = req.body;
-//     const userData = {  //Creates a userData object with which to compare and use email, name, and password
-//         //RecipeName:RecipeName,
-//         //Website:Website,
-//         //Servings:Servings,
-//         //Type:Type,
-//         //Cuisine: Cuisine,
-//         Calories:Calories,ProteinG:ProteinG,Fat:Fat,        Carbs:Carbs,
-//         CaloriesOp:CaloriesOp,        ProteinGOp:ProteinGOp,        FatOp:FatOp,        CarbsOp:CarbsOp,
-//         CaloriesVal:CaloriesVal,        ProteinGVal:ProteinGVal,        FatVal:FatVal,        CarbsVal:CarbsVal,
-//     }
-//     try {
-//
-//         const arr = await recipes.find({Calories:{CaloriesOp:CaloriesVal},ProteinG:{ProteinGOp:ProteinGVal},Fat:{FatOp:FatVal},Carbs:{CarbsOp:CarbsVal} });
-//
-//         res.json(arr);
-//
-//     } catch (error) {
-//         res.status(500).json({ error: "Internal Server Error" });
-//
-//     }
-// });
-// /*
-// async function submit(e) {
-//     e.preventDefault();
-//
-//     try {
-//         const response = await axios.post("http://localhost:8000/recommender", {
-//             Calories,ProteinG,Fat,Carbs,CaloriesOp,ProteinGOp,FatOp,CarbsOp,CaloriesVal,ProteinGVal,FatVal,CarbsVal
-//         });
-//
-//         alert(response);
-//
-//     } catch (error) {
-//         showErrorNotification("Something went wrong. Please try again.");
-//         console.error(error);
-//     }
-// }
-//
-// function showErrorNotification(message) {
-//     const notificationElement = document.createElement("div");
-//     notificationElement.classList.add("error-notification");
-//     notificationElement.textContent = message;
-//     document.body.appendChild(notificationElement);
-//     setTimeout(() => {
-//         document.body.removeChild(notificationElement);
-//     }, 5000);
-// }*/
-//
-// app.use("/api/calendar", require("./controllers/calendarcontroller"))
-// app.listen(8000, async () => {
-//     console.log("port connected");
-// });
-
-
-
-// backend app.js
 const express = require("express");
 const bcrypt = require('bcrypt');
 const collection = require("./mongo");
@@ -215,7 +51,7 @@ app.post("/login", async (req, res) => {
 // Signup endpoint
 app.post("/signup", async (req, res) => {
     const { email, name, password } = req.body;
-
+    
     try {
         const existingUser = await users.findOne({ email: email });
         if (existingUser) {
@@ -243,6 +79,10 @@ app.post("/accountdel", async (req, res) => {
 
     try {
         const result = await users.findOneAndDelete({ email: email });
+        const arr = await ev.find({email});
+        while (arr.length >0) {
+            ev.findOneAndDelete({email:email});
+        }
         if (!result) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -252,19 +92,6 @@ app.post("/accountdel", async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
-
-// Add schedule endpoint
-// app.post("/home/schedule", async (req, res) => {
-//     const { email, date, time, meal } = req.body;
-//
-//     try {
-//         const newEvent = await schedule.create({ email, date, time, meal });
-//         res.status(201).json(newEvent);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: "Internal Server Error" });
-//     }
-// });
 
 // app.js - within the /home/schedule endpoint
 app.post("/home/schedule", async (req, res) => {
